@@ -1,0 +1,107 @@
+.primary-colour{
+    background-color: #535254;
+}
+.backround-colour{
+    background-color: #a7a6a8;
+}
+.map{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    flex-basis: 100%;
+}
+.language{
+    width: 50px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 1rem;
+
+}
+.language img{
+    padding: 0;
+}
+.language .btn{
+    cursor: pointer;
+    margin:0;
+    background-size: 50px auto;
+    height: 35px;
+    width: 50px;
+    align-self: center;
+    padding: 0.5rem
+}
+.tietoja{
+    display: block;
+    width: calc(70% - 2rem);
+    padding: 0;
+
+}
+.tietoja h2{
+    margin: 0;
+    font-size: xx-large;
+}
+.tietoja p{
+    font-size: x-large;
+
+}
+body{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+header{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+header h1{
+    padding: 1rem;
+    width: 45%;
+}
+header img{
+    max-height: 100%;
+    width: auto;
+    padding: 1rem;
+}
+.mapdiv{
+    width: 100%;
+}
+div{
+    display: flex;
+    flex-wrap: wrap;
+    width:80%;
+    padding: 2rem;
+}
+div img{
+    width: 100%;
+    max-width: 30%;
+    height: auto;
+    align-self: center;
+}
+div p{
+    width: calc(70% - 2rem);
+    padding: 1rem;
+}
+div h2{
+    width: calc(70% - 2rem);
+    height: 2rem;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0 auto auto auto;
+}
+div h2 p{
+    width: 100%;
+    padding: 0;
+    font-weight: normal;
+}
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    border-top-style: solid;
+    border-color: #535254;
+    height: 10%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
