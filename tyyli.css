@@ -12,24 +12,22 @@
 }
 .language{
     width: 50px;
-    height: 100px;
+    height: 180px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-end;
     padding: 1rem;
 
 }
-.language img{
-    padding: 0;
-}
+
 .language .btn{
     cursor: pointer;
-    margin:0;
     background-size: 50px auto;
-    height: 35px;
-    width: 50px;
+    height: 37px;
+    width: 53px;
     align-self: center;
-    padding: 0.5rem
+    margin: 0.5rem;
 }
 .tietoja{
     display: block;
@@ -39,11 +37,15 @@
 }
 .tietoja h2{
     margin: 0;
-    font-size: xx-large;
 }
-.tietoja p{
-    font-size: x-large;
-
+.MobileFontX-large{
+    font-size: 2.0rem;
+}
+.MobileFontXX-large{
+    font-size: 2.2rem;
+}
+.MobileFontXXX-large{
+    font-size: 2.5rem;
 }
 body{
     margin: 0;
@@ -105,3 +107,61 @@ footer{
     justify-content: center;
     align-items: center;
 }
+@media only screen and (min-width: 600px) {
+    .MobileFontX-large {
+        font-size: 1.6rem;
+    }
+
+    .MobileFontXX-large {
+        font-size: 1.8rem;
+    }
+
+    .MobileFontXXX-large {
+        font-size: 2.1rem;
+    }
+
+    header img {
+        width: 15%;
+        height: 70%;
+        max-height: none;
+        padding: 1rem;
+
+    }
+
+    .language {
+        height: auto;
+    }
+
+    header h1 {
+        width: 65%;
+    }
+}
+    @media only screen and (min-width: 800px) and (orientation: landscape) {
+        .MobileFontX-large {
+            font-size: 1rem;
+        }
+
+        .MobileFontXX-large {
+            font-size: 1.2rem;
+        }
+
+        .MobileFontXXX-large {
+            font-size: 1.8rem;
+        }
+        header{
+            height: 3%;
+        }
+
+        .language {
+            height: auto;
+        }
+
+        header h1 {
+            width: calc(100% - 15% - 5rem - 50px - 10%);
+        }
+        div img{
+            max-width: 20%;
+        }
+
+
+    }
