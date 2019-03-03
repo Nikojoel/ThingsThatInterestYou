@@ -11,16 +11,15 @@
     flex-basis: 100%;
 }
 .language{
-    width: 50px;
-    height: 180px;
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-end;
+    align-items: center;
     padding: 1rem;
 
 }
-
 .language .btn{
     cursor: pointer;
     background-size: 50px auto;
@@ -38,20 +37,23 @@
 .tietoja h2{
     margin: 0;
 }
-.MobileFontX-large{
-    font-size: 2.0rem;
+.MobileFontX-large {
+    font-size: 1.6rem;
 }
-.MobileFontXX-large{
-    font-size: 2.2rem;
+
+.MobileFontXX-large {
+    font-size: 1.8rem;
 }
-.MobileFontXXX-large{
-    font-size: 2.5rem;
+
+.MobileFontXXX-large {
+    font-size: 2.1rem;
 }
 body{
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    min-width: 500px;
 }
 header{
     display: flex;
@@ -60,15 +62,20 @@ header{
 }
 header h1{
     padding: 1rem;
-    width: 45%;
+    width: calc(100% - 5rem - 220px );
 }
 header img{
-    max-height: 100%;
-    width: auto;
+    width: calc(331px / 1.5);
+    height: calc(173px / 1.5);
     padding: 1rem;
 }
 .mapdiv{
     width: 100%;
+}
+.haku{
+    padding: 0;
+    height: 2rem;
+    width: auto;
 }
 div{
     display: flex;
@@ -102,40 +109,47 @@ footer{
     flex-wrap: wrap;
     border-top-style: solid;
     border-color: #535254;
-    height: 10%;
+    height: 4rem;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 610px) {
     .MobileFontX-large {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .MobileFontXX-large {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .MobileFontXXX-large {
-        font-size: 2.1rem;
+        font-size: 2rem;
     }
-
-    header img {
-        width: 15%;
-        height: 70%;
-        max-height: none;
+    .language .btn {
+        margin: 0.25rem;
+    }
+    header img{
+        width: calc(331px / 1.75);
+        height: calc(173px / 1.75);
         padding: 1rem;
-
     }
+
 
     .language {
         height: auto;
+        width: 21%;
     }
 
     header h1 {
-        width: 65%;
+        width: calc(100% - 21% - 7rem - 189px );
+    }
+    .haku {
+        height: 3rem;
+        padding: 0.5rem 0;
     }
 }
+
     @media only screen and (min-width: 800px) and (orientation: landscape) {
         .MobileFontX-large {
             font-size: 1rem;
@@ -148,19 +162,32 @@ footer{
         .MobileFontXXX-large {
             font-size: 1.8rem;
         }
+        .language .btn {
+            margin: 0.25rem;
+        }
         header{
             height: 3%;
         }
 
         .language {
             height: auto;
+            width: 16%;
         }
 
         header h1 {
-            width: calc(100% - 15% - 5rem - 50px - 10%);
+            width: calc(100% - 16% - 7rem - 165px );
         }
         div img{
             max-width: 20%;
+        }
+        header img{
+            width: calc(331px / 2);
+            height: calc(173px / 2);
+            padding: 1rem;
+        }
+        .haku {
+            height: 3rem;
+            padding: 0.5rem 0;
         }
 
 
