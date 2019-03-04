@@ -36,7 +36,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    min-width: 500px;
+    min-width: 300px;
     font-family: 'Libre Franklin', sans-serif;
 }
 main{
