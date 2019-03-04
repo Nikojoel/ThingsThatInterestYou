@@ -42,7 +42,6 @@ function showEventList(json) {
     for (let i = 0; i < json.data.length; i++) {
         const li = document.createElement('li');
         const title = document.createElement('h3');
-        title.textContent= json.data[i].name.fi;
         const titleLink = document.createElement('a');
         titleLink.href = 'event_info.html';
         titleLink.appendChild(document.createTextNode(json.data[i].name.fi));

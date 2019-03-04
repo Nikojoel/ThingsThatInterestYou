@@ -73,6 +73,11 @@ header img{
     background-color: #ececec;
     width: 100%;
 }
+
+#events_result {
+    list-style-type: none;
+}
+
 div{
     display: flex;
     flex-wrap: wrap;
