@@ -29,7 +29,7 @@
 }
 
 .MobileFontXXX-large {
-    font-size: 2.1rem;
+    font-size: 2.8rem;
 }
 body{
     margin: 0;
@@ -37,6 +37,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     min-width: 500px;
+    font-family: 'Libre Franklin', sans-serif;
 }
 header{
     display: flex;
@@ -46,6 +47,7 @@ header{
 header h1{
     padding: 1rem;
     width: calc(100% - 5rem - 220px );
+    font-family: 'Lobster', cursive;
 }
 header img{
     width: calc(331px / 1.5);
@@ -54,7 +56,7 @@ header img{
 }
 .mapdiv{
     width: 100%;
-    height: 550px;
+    height: 45rem;
 }
 .haku{
     padding: 0;
@@ -138,7 +140,7 @@ footer{
         }
 
         .MobileFontXXX-large {
-            font-size: 1.8rem;
+            font-size: 2.8rem;
         }
         header{
             height: 3%;
