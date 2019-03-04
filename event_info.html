@@ -11,7 +11,7 @@
     <link href="tyyli.css" rel="stylesheet">
 
 </head>
-<body class="backround-colour">
+<body class="backround-colour" onload="fetchEventInfo()">
 <header class="primary-colour">
     <img src="pics/WebLogo.png" alt="Things That Interest You logo">
     <h1 class="MobileFontXXX-large">Things That Interest You</h1>
@@ -19,9 +19,8 @@
 </header>
 
 <main>
-    <ul>
-
-    </ul>
+    <div id = "event_info"></div>
+    <div id = "map"></div>
 
     <footer class="backround-colour MobileFontX-large">
 
@@ -32,5 +31,6 @@
         integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
         crossorigin=""></script>
 <script src="scripts/map.js"></script>
+<script src="scripts/event.js"></script>
 </body>
 </html>

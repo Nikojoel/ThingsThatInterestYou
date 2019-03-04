@@ -43,13 +43,15 @@ function showEventList(json) {
         const li = document.createElement('li');
         const title = document.createElement('h3');
         const titleLink = document.createElement('a');
-        titleLink.href = 'event_info.html';
+        titleLink.href = 'event_info.html?id=' + json.data[i].id;
+        titleLink.target= '_blank';
         titleLink.appendChild(document.createTextNode(json.data[i].name.fi));
         title.appendChild(titleLink);
 
         const figure = document.createElement('figure');
         const picLink = document.createElement('a');
-        picLink.href = 'event_info.html';
+        picLink.href = 'event_info.html?id=' + json.data[i].id;
+        titleLink.target= '_blank';
         const img = document.createElement('img');
 
         try{
@@ -83,7 +85,6 @@ function showEventList(json) {
         console.log(json.data[i].location.name.fi); //tapahtumapaikan nimi nimi
         console.log(json.data[i].location.street_address.fi); //katuosoite
         console.log(json.data[i].location.address_locality.fi); //paikkakunta
-        //console.log(json.data[i].short_description.fi); //lyhyt kuvausteksti
         console.log(json.data[i].description.fi); //täysi kuvaus
         //console.log(json.data[i].info_url.fi); //mahdollinen linkki tapahtuman omille sivuille
 
