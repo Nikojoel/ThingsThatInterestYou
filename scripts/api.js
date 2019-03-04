@@ -33,11 +33,49 @@ function fetchEvents() {
 }
 
 function showEventList(json) {
-    console.log(json);
+    const list = document.querySelector('#events_result');
+    list.innerHTML ='';
 
+    console.log(json);
     console.log(json.meta.count); //hakutulosten määrä
     console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
     for (let i = 0; i < json.data.length; i++) {
+        const li = document.createElement('li');
+        const title = document.createElement('h3');
+        title.textContent= json.data[i].name.fi;
+        const titleLink = document.createElement('a');
+        titleLink.href = 'event_info.html';
+        titleLink.appendChild(document.createTextNode(json.data[i].name.fi));
+        title.appendChild(titleLink);
+
+        const figure = document.createElement('figure');
+        const picLink = document.createElement('a');
+        picLink.href = 'event_info.html';
+        const img = document.createElement('img');
+
+        try{
+            img.src = json.data[i].images[0].url; //tapahtumaan mahdollisesti liitetty kuva
+        }
+        catch (e) {
+            //img.src = 'noimage_medium.jpg';
+        }
+        img.alt = 'event image';
+        picLink.appendChild(img);
+        figure.appendChild(picLink);
+
+        const summary = document.createElement('p');
+        summary.className = 'summary';
+        summary.innerHTML+=json.data[i].description.fi;
+
+        const textBox = document.createElement('div');
+        textBox.className = 'textBox';
+
+        textBox.appendChild(title);
+        textBox.appendChild(summary);
+        li.appendChild(figure);
+        li.appendChild(textBox);
+        list.appendChild(li);
+
         console.log(json.data[i].start_time); //tapahtuman alku
         console.log(json.data[i].end_time); //tapahtuman loppu
         console.log(json.data[i].name.fi); //tapahtuman nimi
@@ -46,9 +84,9 @@ function showEventList(json) {
         console.log(json.data[i].location.name.fi); //tapahtumapaikan nimi nimi
         console.log(json.data[i].location.street_address.fi); //katuosoite
         console.log(json.data[i].location.address_locality.fi); //paikkakunta
-        console.log(json.data[i].short_description.fi); //lyhyt kuvausteksti
+        //console.log(json.data[i].short_description.fi); //lyhyt kuvausteksti
         console.log(json.data[i].description.fi); //täysi kuvaus
-        console.log(json.data[i].info_url.fi); //mahdollinen linkki tapahtuman omille sivuille
+        //console.log(json.data[i].info_url.fi); //mahdollinen linkki tapahtuman omille sivuille
 
         console.log(json.data[i].images[0]); //tapahtumaan mahdollisesti liitetty kuva
     }

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="PublishConfigData">
-=======
-  <component name="PublishConfigData" autoUpload="On explicit save action" createEmptyFolders="true" filePermissions="493" folderPermissions="493" autoUploadExternalChanges="true">
->>>>>>> origin/master
     <serverData>
       <paths name="shell">
         <serverdata>
@@ -14,9 +10,5 @@
         </serverdata>
       </paths>
     </serverData>
-<<<<<<< HEAD
-=======
-    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
->>>>>>> origin/master
   </component>
 </project>
