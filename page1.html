@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Things That Interest You</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-          crossorigin=""/>
     <link href="tyyli.css" rel="stylesheet">
 
 </head>
@@ -17,38 +13,37 @@
     <div class="language">
         <button class="btn" style="background-image: url('pics/uk.GIF');"></button>
         <button class="btn" style="background-image: url('pics/Finland.flag.gif');"></button>
+        <label for="search_text">Event search:</label>
+        <input id="search_text" type="text">
+        <button id="search_btn">Search</button>
     </div>
 </header>
 
-<div id="map" class="mapdiv">
+<div class="mapdiv">
+<img src="pics/350x150.png" class="map" alt="placeholder">
 </div>
 
 <div>
     <img src="pics/placeholder.png" alt="placeholder">
     <p class="MobileFontX-large">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh a risus pellentesque sodales. Nulla
-        consequat blandit tristique. Donec bibendum tincidunt erat. Proin enim arcu, pharetra nec massa in, tempus
-        lobortis magna. Sed tincidunt odio et tincidunt dapibus. Duis.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id nibh a risus pellentesque sodales. Nulla consequat blandit tristique. Donec bibendum tincidunt erat. Proin enim arcu, pharetra nec massa in, tempus lobortis magna. Sed tincidunt odio et tincidunt dapibus. Duis.
     </p>
 </div>
 
 <div>
 
-    <img src="pics/Kuva1.jpg" alt="Kuva tapahtumalistan selaajasta">
+   <img src="pics/Kuva1.jpg" alt="Kuva tapahtumalistan selaajasta" >
     <div class="tietoja">
         <h2 class="MobileFontXX-large">Tietoa ohjelmasta</h2>
-        <p class="MobileFontX-large">
-            tietoa ohjelman toiminnasta
-        </p>
+    <p class="MobileFontX-large">
+        tietoa ohjelman toiminnasta
+    </p>
     </div>
 </div>
 
 <footer class="backround-colour MobileFontX-large">
-    This post was made by m-14 gang
+This post was made by m-14 gang
 </footer>
-<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-        crossorigin=""></script>
-<script src="js/map.js"></script>
+<script src="scripts/api.js"></script>
 </body>
 </html>
