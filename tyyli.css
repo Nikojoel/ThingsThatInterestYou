@@ -10,15 +10,19 @@
     height: auto;
     flex-basis: 100%;
 }
-
-.tietoja{
+main p img{
     display: block;
-    width: calc(70% - 2rem);
-    padding: 0;
-
+    padding: 1rem 0;
 }
-.tietoja h2{
-    margin: 0;
+main p{
+    width: calc(100% / 3 - 4rem);
+    padding: 2rem;
+}
+main{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 70%;
 }
 .MobileFontX-large {
     font-size: 1.6rem;
@@ -31,6 +35,13 @@
 .MobileFontXXX-large {
     font-size: 2.9rem;
 }
+#MarketingPic{
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: 1808px;
+    display: block;
+}
 body {
     margin: 0;
     display: flex;
@@ -39,27 +50,58 @@ body {
     min-width: 300px;
     font-family: 'Libre Franklin', sans-serif;
 }
-main{
-    background-color: white;
-    width: 70%;
-
-}
 header{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    align-items: center;
 }
 header h1{
     padding: 1rem;
-    width: calc(100% - 5rem - 220px );
+    width: auto;
+    height: fit-content;
     font-family: 'Lobster', cursive;
     color: #ececec;
+    margin: 0;
 }
 
 header img{
     width: calc(331px / 1.5);
     height: calc(173px / 1.5);
     padding: 1rem;
+}
+nav{
+    padding: 0.5rem 0 0 0;
+    width: 100%;
+}
+nav ul{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+nav ul li{
+    list-style-type: none;
+    width: calc(100% / 4);
+    text-align: center;
+    padding: 1rem 0;
+    border-right-style: solid;
+    border-color: #161d27;
+    border-width: 1px;
+}
+nav ul li:last-of-type{
+  border-right-style: none;
+}
+
+nav ul li:hover{
+    background-color: #22313f;
+    cursor: pointer;
+}
+nav ul li a{
+    display: block;
+    text-decoration: none;
+    color: #ececec;
 }
 .colourbtn{
     background-color: #22313f;
@@ -72,39 +114,31 @@ header img{
 .haku{
     background-color: #ececec;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+.haku h1{
+    flex-basis: 100%;
+    text-align: center;
+    margin: 0;
+}
+.haku input{
+    margin: .5rem;
 }
 
 #events_result {
     list-style-type: none;
 }
+#search_btn:hover{
+    cursor: pointer;
+}
 
-div{
-    display: flex;
-    flex-wrap: wrap;
-    width:80%;
-    padding: 2rem;
-}
-div img{
-    width: 100%;
-    max-width: 30%;
-    height: auto;
-    align-self: center;
-}
-div p{
-    width: calc(70% - 2rem);
-    padding: 1rem;
-}
-div h2{
-    width: calc(70% - 2rem);
-    height: 2rem;
-    padding: 0 1rem 1rem 1rem;
-    margin: 0 auto auto auto;
-}
-div h2 p{
-    width: 100%;
-    padding: 0;
-    font-weight: normal;
-}
 footer{
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +146,7 @@ footer{
     border-color: #535254;
     border-top-width: 1px;
     height: 4rem;
-    width: 100%;
+    width: 70%;
     justify-content: center;
     align-items: center;
 }
@@ -135,14 +169,6 @@ footer{
         padding: 1rem;
     }
 
-
-
-    header h1 {
-        width: calc(100% - 21% - 7rem - 189px );
-    }
-    .haku {
-
-    }
 }
 
     @media only screen and (min-width: 800px) and (orientation: landscape) {
@@ -161,18 +187,10 @@ footer{
             height: 3%;
         }
 
-
-        header h1 {
-            width: calc(100% - 16% - 7rem - 165px );
-        }
-        div img{
-            max-width: 20%;
-        }
         header img{
             width: calc(331px / 2);
             height: calc(173px / 2);
             padding: 1rem;
         }
-
 
     }
