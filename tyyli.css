@@ -103,6 +103,11 @@ nav ul li a{
 .colourbtn{
     background-color: #22313f;
     color: #ececec;
+    border-radius: 0.9rem;
+    padding: 0.35rem;
+}
+.colourbtn:hover{
+    cursor: pointer;
 }
 .mapdiv{
     width: 100%;
@@ -120,6 +125,15 @@ nav ul li a{
     flex-wrap: wrap;
     padding: 0.5rem;
 }
+#quickSelect{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#quickSelect button{
+    margin: 0 0.5rem;
+    padding: .20rem;
+}
 .haku h1{
     flex-basis: 100%;
     text-align: center;
@@ -132,10 +146,6 @@ nav ul li a{
 #events_result {
     list-style-type: none;
 }
-#search_btn:hover{
-    cursor: pointer;
-}
-
 footer{
     display: flex;
     flex-wrap: wrap;
