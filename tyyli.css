@@ -1,8 +1,8 @@
 .primary-colour{
-    background-color: #535254;
+    background-color: #2c3e50;
 }
 .backround-colour{
-    background-color: #a7a6a8;
+    background-color: white;
 }
 .map{
     max-width: 100%;
@@ -31,13 +31,18 @@
 .MobileFontXXX-large {
     font-size: 2.9rem;
 }
-body{
+body {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     min-width: 500px;
     font-family: 'Libre Franklin', sans-serif;
+}
+main{
+    background-color: white;
+    width: 70%;
+
 }
 header{
     display: flex;
@@ -48,20 +53,25 @@ header h1{
     padding: 1rem;
     width: calc(100% - 5rem - 220px );
     font-family: 'Lobster', cursive;
+    color: #ececec;
 }
+
 header img{
     width: calc(331px / 1.5);
     height: calc(173px / 1.5);
     padding: 1rem;
+}
+.colourbtn{
+    background-color: #22313f;
+    color: #ececec;
 }
 .mapdiv{
     width: 100%;
     height: 45rem;
 }
 .haku{
-    padding: 0;
-    height: 2rem;
-    width: auto;
+    background-color: #ececec;
+    width: 100%;
 }
 div{
     display: flex;
@@ -95,6 +105,7 @@ footer{
     flex-wrap: wrap;
     border-top-style: solid;
     border-color: #535254;
+    border-top-width: 1px;
     height: 4rem;
     width: 100%;
     justify-content: center;
@@ -125,8 +136,7 @@ footer{
         width: calc(100% - 21% - 7rem - 189px );
     }
     .haku {
-        height: 3rem;
-        padding: 0.5rem 0;
+
     }
 }
 
@@ -157,10 +167,6 @@ footer{
             width: calc(331px / 2);
             height: calc(173px / 2);
             padding: 1rem;
-        }
-        .haku {
-            height: 3rem;
-            padding: 0.5rem 0;
         }
 
 

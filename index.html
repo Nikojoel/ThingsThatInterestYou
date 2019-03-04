@@ -2,11 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Things That Interest You</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin|Lobster&amp;subset=latin-ext" rel="stylesheet">
+    <link href="tyyli.css" rel="stylesheet">
+
 </head>
-<body>
-<p>
-    big nutters
-</p>
+<body class="backround-colour">
+<header class="primary-colour">
+    <img src="pics/Logo.jpg" alt="Things That Interest You logo">
+    <h1 class="MobileFontXXX-large">Things That Interest You</h1>
+
+</header>
+
+<div class="haku">
+    <label for="search_text">Event search:</label>
+    <input id="search_text" type="text">
+    <button id="search_btn" class="colourbtn">Search</button>
+</div>
+<main>
+    <ul>
+    </ul>
+
+
+
+
+<footer class="backround-colour MobileFontX-large">
+    This post was made by m-14 gang
+</footer>
+</main>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+<script src="scripts/api.js"></script>
+<script src="js/map.js"></script>
 </body>
 </html>
