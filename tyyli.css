@@ -14,7 +14,7 @@ main p img{
     display: block;
     padding: 1rem 0;
 }
-main p{
+.info{
     width: calc(100% / 3 - 4rem);
     padding: 2rem;
 }
@@ -22,7 +22,8 @@ main{
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    width: 70%;
+    width: 90%;
+    justify-content: center;
 }
 .MobileFontX-large {
     font-size: 1.6rem;
@@ -145,7 +146,25 @@ nav ul li a{
 
 #events_result {
     list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 70em;
 }
+#events_result li {
+    width: 100%;
+    display: flex;
+}
+
+#events_result li figure {
+    width: 20%;
+}
+.textBox {
+
+}
+
+
+
 footer{
     display: flex;
     flex-wrap: wrap;

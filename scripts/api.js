@@ -64,9 +64,9 @@ function showEventList(json) {
         picLink.appendChild(img);
         figure.appendChild(picLink);
 
-        const summary = document.createElement('p');
+        const summary = document.createElement('div');
         summary.className = 'summary';
-        summary.innerHTML+=json.data[i].description.fi;
+        summary.innerHTML=json.data[i].description.fi;
 
         const textBox = document.createElement('div');
         textBox.className = 'textBox';
