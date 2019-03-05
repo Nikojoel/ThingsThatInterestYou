@@ -1,3 +1,5 @@
+//Date function
+
 function setToday() {
   setDate(0);
 }
