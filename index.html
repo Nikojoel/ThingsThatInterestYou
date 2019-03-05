@@ -32,8 +32,8 @@
     <input id="end_date" type="date">
     <button id="search_btn" class="colourbtn">Search</button>
     <div id="quickSelect">
-        <button id="today_btn" class="colourbtn">Today</button>
-        <button id="tomorrow_btn" class="colourbtn">Tomorrow</button>
+        <button onclick="setToday()" id="today_btn" class="colourbtn">Today</button>
+        <button onclick="setTomorrow()" id="tomorrow_btn" class="colourbtn">Tomorrow</button>
     </div>
 </div>
 <main>
@@ -69,5 +69,6 @@
 </footer>
 
 <script src="scripts/api.js"></script>
+<script src="scripts/QuickDate.js"></script>
 </body>
 </html>
