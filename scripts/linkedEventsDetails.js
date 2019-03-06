@@ -19,8 +19,6 @@ function fetchEventInfo() {
 
 function showEventInfo(json) {
     console.log(json);
-    console.log(json.location.position.coordinates[0]); //latitude - karttaa varten, ei näkyviin
-    console.log(json.location.position.coordinates[1]); //longitude - karttaa varten, ei näkyviin
 
     const info = document.querySelector('#event_info');
     info.innerHTML ='';
@@ -28,7 +26,6 @@ function showEventInfo(json) {
     const title = document.createElement('h3');
     title.textContent = json.name.fi;
 
-    const figure = document.createElement('figure');
     const img = document.createElement('img');
 
     try{
@@ -38,13 +35,36 @@ function showEventInfo(json) {
         //img.src = 'noimage_medium.jpg';
     }
     img.alt = 'event image';
-    figure.appendChild(img);
+    img.className='event_image';
 
     const summary = document.createElement('p');
     summary.className = 'summary';
     summary.innerHTML+=json.description.fi;
 
-    info.appendChild(figure);
+    const start_time = document.createElement('p');
+    start_time.className='start_time';
+    start_time.textContent = json.start_time;
+
+    const end_time = document.createElement('p');
+    end_time.className='end_time';
+    end_time.textContent = json.end_time;
+
+    const location_name = document.createElement('p');
+    location_name.className='location_name';
+    location_name.textContent = json.location.name.fi;
+
+    const street_address = document.createElement('p');
+    street_address.className='street_address';
+    street_address.textContent = json.location.street_address.fi + ', ' + json.location.address_locality.fi;
+
+    info.appendChild(img);
     info.appendChild(title);
     info.appendChild(summary);
+    info.appendChild(start_time);
+    info.appendChild(end_time);
+    info.appendChild(location_name);
+    info.appendChild(street_address);
+
+    console.log(json.location.position.coordinates[0]); //latitude - karttaa varten, ei näkyviin
+    console.log(json.location.position.coordinates[1]); //longitude - karttaa varten, ei näkyviin
 }

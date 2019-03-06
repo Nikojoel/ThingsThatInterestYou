@@ -23,6 +23,7 @@ main{
     flex-wrap: wrap;
     background-color: white;
     width: 90%;
+    max-width: 70em;
     justify-content: center;
 }
 .MobileFontX-large {
@@ -149,21 +150,49 @@ nav ul li a{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 70em;
+    padding: 1em;
 }
+
 #events_result li {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+}
+
+.start_time_list {
+    width: 100%;
+}
+
+.end_time_list {
+    width: 100%;
+}
+
+.textBox_list {
+    box-sizing: border-box;
+    width: 70%;
 }
 
 #events_result li figure {
+    box-sizing: border-box;
     width: 20%;
+    max-width: 200px;
+    min-width: 8em;
+    margin: 0;
 }
-.textBox {
 
+#events_result li figure a {
+    width: 100%;
 }
 
+.event_image_list {
+    width: 100%;
+    height: auto;
+}
 
+.address_info_list {
+    width: 100%;
+    display: flex;
+}
 
 footer{
     display: flex;
