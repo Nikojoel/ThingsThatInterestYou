@@ -25,7 +25,8 @@ function showEventInfo(json) {
     info.innerHTML ='';
 
     const title = document.createElement('h3');
-    title.textContent = json.name.fi;
+    if(json.name.fi!==null)
+        title.textContent = json.name.fi;
 
     const img = document.createElement('img');
 
@@ -40,19 +41,23 @@ function showEventInfo(json) {
 
     const summary = document.createElement('p');
     summary.className = 'summary';
-    summary.innerHTML+=json.description.fi;
+    if(json.description!==null)
+        summary.innerHTML=json.description.fi;
 
     const start_time = document.createElement('p');
     start_time.className='start_time';
-    start_time.textContent = json.start_time;
+    if(json.start_time!==null)
+        start_time.textContent = json.start_time;
 
     const end_time = document.createElement('p');
     end_time.className='end_time';
-    end_time.textContent = json.end_time;
+    if(json.end_time!==null)
+        end_time.textContent = json.end_time;
 
     const location_name = document.createElement('p');
     location_name.className='location_name';
-    location_name.textContent = json.location.name.fi;
+    if(json.location.name!==null)
+        location_name.textContent = json.location.name.fi;
 
     const street_address = document.createElement('p');
     street_address.className='street_address';
@@ -65,9 +70,6 @@ function showEventInfo(json) {
     info.appendChild(end_time);
     info.appendChild(location_name);
     info.appendChild(street_address);
-
-    const lat = json.location.position.coordinates[0]; //latitude - karttaa varten, ei näkyviin
-    const lon = json.location.position.coordinates[1]; //longitude - karttaa varten, ei näkyviin
 
     // Näytetään kartta ja copyright oikeudet alakulmassa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

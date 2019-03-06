@@ -31,6 +31,7 @@
     <input id="start_date" type="date">
     <input id="end_date" type="date">
     <button id="search_btn" class="colourbtn">Search</button>
+    <h3 id="search_results"></h3>
     <div id="quickSelect">
         <button onclick="setToday()" id="today_btn" class="colourbtn">Today</button>
         <button onclick="setTomorrow()" id="tomorrow_btn" class="colourbtn">Tomorrow</button>
@@ -67,8 +68,8 @@
     <p>Copyright © 2019 <strong>All rights reserved. Developed by Niko Holopainen, Jetro Saarti, Daniel
         Eggleton</strong>.</p>
 </footer>
-
 <script src="scripts/linkedEventsList.js"></script>
 <script src="scripts/QuickDate.js"></script>
+<script>setStartDate(0);</script>
 </body>
 </html>

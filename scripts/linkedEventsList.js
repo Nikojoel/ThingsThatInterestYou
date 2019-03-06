@@ -9,6 +9,7 @@ const end_field = document.querySelector('#end_date');
 const language = '&language=' + 'fi';
 const start_date = '&start=';
 const end_date = '&end=';
+const sorting = '&sort=end_time';
 
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
@@ -25,7 +26,7 @@ search_text.addEventListener('keydown', function (e) {
 
 
 function fetchEvents() {
-    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value)
+    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value + sorting)
         .then(function (result) {
             return result.json();
         }).then(function (json) {
@@ -40,8 +41,7 @@ function showEventList(json) {
     list.innerHTML = '';
 
     console.log(json);
-    console.log(json.meta.count); //hakutulosten määrä
-    console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
+
     for (let i = 0; i < json.data.length; i++) {
         const li = document.createElement('li');
         const title = document.createElement('h3');
@@ -69,22 +69,26 @@ function showEventList(json) {
 
         const summary = document.createElement('div');
         summary.className = 'summary_list';
-        summary.innerHTML = json.data[i].description.fi;
+        if(json.data[i].description!==null)
+            summary.innerHTML = json.data[i].description.fi;
 
         const textBox = document.createElement('div');
         textBox.className = 'textBox_list';
 
         const start_time = document.createElement('p');
         start_time.className = 'start_time_list';
-        start_time.textContent = json.data[i].start_time;
+        if(json.data[i].start_time!==null)
+            start_time.textContent = json.data[i].start_time;
 
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
-        end_time.textContent = json.data[i].end_time;
+        if(json.data[i].end_time!==null)
+            end_time.textContent = json.data[i].end_time;
 
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
-        location_name.textContent = json.data[i].location.name.fi;
+        if(json.data[i].location.name!==null)
+            location_name.textContent = json.data[i].location.name.fi;
 
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
@@ -105,5 +109,8 @@ function showEventList(json) {
         li.appendChild(address_info);
 
         list.appendChild(li);
+
+        document.querySelector('#search_results').textContent='Search results: ' + json.meta.count; //hakutulosten määrä
+        console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
     }
 }
