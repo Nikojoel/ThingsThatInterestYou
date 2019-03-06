@@ -10,6 +10,9 @@
     height: auto;
     flex-basis: 100%;
 }
+.hidden {
+    display: none;
+}
 main p img{
     display: block;
     padding: 1rem 0;

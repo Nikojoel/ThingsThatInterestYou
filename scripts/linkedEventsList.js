@@ -13,8 +13,16 @@ const sorting = '&sort=end_time';
 
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
+//const picture = document.getElementById('MarketingPic');
+//const texts = document.getElementById('texts')
+
+
 search_btn.addEventListener('click', function () {
     fetchEvents();
+    //picture.classList.add('hidden');
+    //texts.classList.add('hidden');
+
+
 });
 
 
