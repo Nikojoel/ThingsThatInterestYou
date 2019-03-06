@@ -78,14 +78,16 @@ function showEventList(json) {
 
         const start_time = document.createElement('p');
         start_time.className = 'start_time_list';
-        if(json.data[i].start_time!==null)
-            start_time.textContent = json.data[i].start_time;
-
+        if(json.data[i].start_time!==null) {
+            const date=new Date(json.data[i].start_time);
+            start_time.textContent = 'Aloitus: '+listDate(date);
+        }
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
-        if(json.data[i].end_time!==null)
-            end_time.textContent = json.data[i].end_time;
-
+        if(json.data[i].end_time!==null) {
+            const date=new Date(json.data[i].end_time);
+            end_time.textContent = 'Loppu: '+listDate(date);
+        }
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
         if(json.data[i].location.name!==null)

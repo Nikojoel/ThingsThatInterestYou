@@ -33,3 +33,17 @@ function setStartDate(x) {
 function setEndDate(x) {
     document.getElementById('end_date').value = setDate(x);
 }
+
+function listDate(x){
+  const date = new Date(x);
+  const year = date.getFullYear();
+  const month = 1 + date.getMonth();
+  const day = date.getDate();
+  const hour = date.getHours();
+  let minute = date.getMinutes();
+  if(minute<10){
+    minute='0'+minute;
+  }
+  return day+'.'+month+'.'+year+', Klo: '+hour+':'+minute;
+
+}
