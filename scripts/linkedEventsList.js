@@ -13,8 +13,10 @@ const sorting = '&sort=end_time';
 
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
+let pageNumber = 1;
+
 search_btn.addEventListener('click', function () {
-    fetchEvents();
+    fetchEvents(1);
 });
 
 
@@ -25,8 +27,10 @@ search_text.addEventListener('keydown', function (e) {
 });
 
 
-function fetchEvents() {
-    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value + sorting)
+function fetchEvents(pageNum) {
+    pageNumber = pageNum;
+    const page = '&page=' + pageNum;
+    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value + sorting + page)
         .then(function (result) {
             return result.json();
         }).then(function (json) {
@@ -70,7 +74,7 @@ function showEventList(json) {
 
         const summary = document.createElement('div');
         summary.className = 'summary_list';
-        if(json.data[i].description!==null)
+        if (json.data[i].description !== null)
             summary.innerHTML = json.data[i].description.fi;
 
         const textBox = document.createElement('div');
@@ -78,18 +82,26 @@ function showEventList(json) {
 
         const start_time = document.createElement('p');
         start_time.className = 'start_time_list';
+        if (json.data[i].start_time !== null)
+            start_time.textContent = json.data[i].start_time;
+
         if(json.data[i].start_time!==null) {
             const date=new Date(json.data[i].start_time);
             start_time.textContent = 'Aloitus: '+listDate(date);
         }
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
+        if (json.data[i].end_time !== null)
+            end_time.textContent = json.data[i].end_time;
+
         if(json.data[i].end_time!==null) {
             const date=new Date(json.data[i].end_time);
             end_time.textContent = 'Loppu: '+listDate(date);
         }
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
+        if (json.data[i].location.name !== null)
+            location_name.textContent = json.data[i].location.name.fi;
         if(json.data[i].location.name!==null)
             location_name.textContent = "Paikka: "+json.data[i].location.name.fi;
 
@@ -117,8 +129,51 @@ function showEventList(json) {
         //li.appendChild(address_info);
 
         list.appendChild(li);
+    }
 
-        document.querySelector('#search_results').textContent='Search results: ' + json.meta.count; //hakutulosten määrä
-        console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
+    const results = json.meta.count; //hakutulosten määrä
+    document.querySelector('#search_results').textContent = 'Search results: ' + results;
+
+    const pages = document.querySelector('#search_pages');
+    pages.innerHTML = '';
+    /*
+    const totalPages = Math.ceil( parseInt(results)/20);
+    console.log(totalPages);
+    const maxPages = 5;
+    let pageLinks = (totalPages<maxPages)?totalPages:maxPages;
+    for(let i = 0; i<pageLinks;i++){
+        const li = document.createElement('li');
+        li.textContent='1';
+        pages.appendChild(li);
+    }
+    */
+    const previous = document.createElement('a');
+    previous.textContent = '<';
+    if (json.meta.previous !== null) {
+        previous.href = '#';
+        previous.setAttribute('onclick', 'previousPage()');
+    }
+    pages.appendChild(document.createElement('li').appendChild(previous));
+
+    const next = document.createElement('a');
+    next.textContent = '>';
+    if (json.meta.next !== null) {
+        next.href = '#';
+        next.setAttribute('onclick', 'nextPage()');
+    }
+    pages.appendChild(document.createElement('li').appendChild(next));
+
+
+    //console.log(json.meta.previous);
+    //console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
+}
+
+function nextPage() {
+    fetchEvents(pageNumber+1);
+}
+
+function previousPage() {
+    if (pageNumber > 1) {
+        fetchEvents(pageNumber-1);
     }
 }
