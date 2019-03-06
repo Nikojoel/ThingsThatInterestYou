@@ -46,6 +46,7 @@ function showEventList(json) {
         const li = document.createElement('li');
         const title = document.createElement('h3');
         const titleLink = document.createElement('a');
+        const divMain= document.createElement('div');
         titleLink.href = 'event_info.html?id=' + json.data[i].id;
         titleLink.target = '_blank';
         titleLink.appendChild(document.createTextNode(json.data[i].name.fi));
@@ -88,11 +89,11 @@ function showEventList(json) {
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
         if(json.data[i].location.name!==null)
-            location_name.textContent = json.data[i].location.name.fi;
+            location_name.textContent = "Paikka: "+json.data[i].location.name.fi;
 
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
-        street_address.textContent = json.data[i].location.street_address.fi + ', ' + json.data[i].location.address_locality.fi;
+        street_address.textContent = "Osoite: "+json.data[i].location.street_address.fi + ', ' + json.data[i].location.address_locality.fi;
 
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';
@@ -100,13 +101,18 @@ function showEventList(json) {
         address_info.appendChild(street_address);
 
         textBox.appendChild(title);
-        textBox.appendChild(summary);
+        //textBox.appendChild(summary);
+        divMain.appendChild(start_time);
+        divMain.appendChild(end_time);
+        divMain.appendChild(textBox);
+        divMain.appendChild(address_info);
 
-        li.appendChild(start_time);
-        li.appendChild(end_time);
+        //li.appendChild(start_time);
+        //li.appendChild(end_time);
         li.appendChild(figure);
-        li.appendChild(textBox);
-        li.appendChild(address_info);
+        li.appendChild(divMain);
+        //li.appendChild(textBox);
+        //li.appendChild(address_info);
 
         list.appendChild(li);
 
