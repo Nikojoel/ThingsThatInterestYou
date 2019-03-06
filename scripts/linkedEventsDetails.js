@@ -3,6 +3,7 @@
 
 const event_id = window.location.href.split('=').pop();
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/';
+const map = L.map('map').setView([60.170887,24.941531], 10);
 
 
 
@@ -65,6 +66,19 @@ function showEventInfo(json) {
     info.appendChild(location_name);
     info.appendChild(street_address);
 
-    console.log(json.location.position.coordinates[0]); //latitude - karttaa varten, ei näkyviin
-    console.log(json.location.position.coordinates[1]); //longitude - karttaa varten, ei näkyviin
+    const lat = json.location.position.coordinates[0]; //latitude - karttaa varten, ei näkyviin
+    const lon = json.location.position.coordinates[1]; //longitude - karttaa varten, ei näkyviin
+
+    // Näytetään kartta ja copyright oikeudet alakulmassa
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Lisätään markkeri jossa tapahtuma sijaitsee
+    L.marker([lon,lat]).addTo(map)
+        .bindPopup(street_address)
+        .openPopup();
 }
+
+
+
