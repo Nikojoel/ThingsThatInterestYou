@@ -17,12 +17,14 @@ const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=locati
 
 let pageNumber = 1;
 
+let lastEventID;
 let loadMoreAnchor;
 let loadMoreActive = false;
 
 search_btn.addEventListener('click', function () {
     const header = document.querySelector("#page_header");
     header.scrollIntoView();
+    //document.querySelector("#about").style.display = "none";
     list.innerHTML = '';
     fetchEvents(1);
 });
@@ -52,6 +54,9 @@ function showEventList(json) {
     console.log(json);
 
     for (let i = 0; i < json.data.length; i++) {
+        if (json.data[i].id === lastEventID) {
+            continue;
+        }
         const li = document.createElement('li');
         const title = document.createElement('h3');
         const titleLink = document.createElement('a');
@@ -87,18 +92,12 @@ function showEventList(json) {
 
         const start_time = document.createElement('p');
         start_time.className = 'start_time_list';
-        if (json.data[i].start_time !== null)
-            start_time.textContent = json.data[i].start_time;
-
         if (json.data[i].start_time !== null) {
             const date = new Date(json.data[i].start_time);
             start_time.textContent = 'Aloitus: ' + listDate(date);
         }
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
-        if (json.data[i].end_time !== null)
-            end_time.textContent = json.data[i].end_time;
-
         if (json.data[i].end_time !== null) {
             const date = new Date(json.data[i].end_time);
             end_time.textContent = 'Loppu: ' + listDate(date);
@@ -112,7 +111,12 @@ function showEventList(json) {
 
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
-        street_address.textContent = "Osoite: " + json.data[i].location.street_address.fi + ', ' + json.data[i].location.address_locality.fi;
+        street_address.textContent = "Osoite: ";
+        if (json.data[i].location.street_address !== null)
+            street_address.textContent += json.data[i].location.street_address.fi + ', ';
+        if (json.data[i].location.address_locality !== null)
+            street_address.textContent += json.data[i].location.address_locality.fi;
+
 
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';
@@ -134,8 +138,9 @@ function showEventList(json) {
         //li.appendChild(address_info);
 
         list.appendChild(li);
+        lastEventID = json.data[i].id;
 
-        if (i === 6 && json.meta.next !== null) {
+        if (loadMoreActive === false && i >= 2 && json.meta.next !== null) {
             loadMoreActive = true;
             loadMoreAnchor = li;
         }

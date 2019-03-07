@@ -61,7 +61,12 @@ function showEventInfo(json) {
 
     const street_address = document.createElement('p');
     street_address.className='street_address';
-    street_address.textContent = json.location.street_address.fi + ', ' + json.location.address_locality.fi;
+    street_address.textContent = "Osoite: ";
+
+    if (json.location.street_address !== null)
+        street_address.textContent += json.location.street_address.fi + ', ';
+    if (json.location.address_locality !== null)
+        street_address.textContent += json.location.address_locality.fi;
 
     info.appendChild(img);
     info.appendChild(title);

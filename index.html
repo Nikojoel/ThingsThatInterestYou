@@ -14,10 +14,10 @@
     <h1 class="MobileFontXXX-large">Things That Interest You</h1>
     <nav>
         <ul>
-            <li> <a href="index.html">Home</a> </li>
-            <li> <a href="#targetAbout">About</a> </li>
-            <li> <a href="https://github.com/Nnikkeli/WebProjekti">GitHub</a> </li>
-            <li> <a>Administrator login</a> </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a id="myLink" href="#" onclick="showAbout();">About</a></li>
+            <li><a href="https://github.com/Nnikkeli/WebProjekti">GitHub</a></li>
+            <li><a>Administrator login</a></li>
         </ul>
     </nav>
 </header>
@@ -38,33 +38,39 @@
     </div>
 </div>
 <main>
-    <ul id="events_result"></ul>
     <ul id="search_pages"></ul>
+    <ul id="events_result"></ul>
     <span class="anchor" id="targetAbout"></span>
+    <div id="about">
+        <div>
+            <img id="MarketingPic" src="pics/WebKartta.png" alt="Platform Infographic">
+        </div>
 
-    <div>
-        <img id="MarketingPic" src="pics/WebKartta.png" alt="Platform Infographic">
+        <p class="info">
+            <img src="pics/1.png" width="67" height="67" alt="">
+            <strong>Search</strong> for thousands of different events happening in Helsinki metropolitan area. TTIY uses
+            Helsinki Linked
+            Events API to gather information about the events and OpenStreetMap with Leaflet JavaScript library to
+            display
+            the locations of the specific events.
+        </p>
+
+        <p class="info">
+            <img src="pics/2.png" width="67" height="67" alt="">
+            <strong>Filter</strong> your searches by specifing your desired starting aswell as ending date and keyword
+            eq. music. Results are
+            independent of your current location. Load up to 20 events per one search to choose from.
+        </p>
+
+        <p class="info">
+            <img src="pics/3.png" width="67" height="67" alt="">
+            <strong>Created</strong> as a web application project in association with Metropolia University of Applied
+            Sciences and only
+            non-marketed and open
+            source APIs are used. Check out the source code from GitHub. Creators are Niko Holopainen, Jetro Saarti and
+            Daniel Eggleton.
+        </p>
     </div>
-
-    <p class="info">
-        <img src="pics/1.png" width="67" height="67" alt="">
-        <strong>Search</strong> for thousands of different events happening in Helsinki metropolitan area. TTIY uses Helsinki Linked
-        Events API to gather information about the events and OpenStreetMap with Leaflet JavaScript library to display
-        the locations of the specific events.
-    </p>
-
-    <p class="info">
-        <img src="pics/2.png" width="67" height="67" alt="">
-        <strong>Filter</strong> your searches by specifing your desired starting aswell as ending date and keyword eq. music. Results are
-        independent of your current location. Load up to 20 events per one search to choose from.
-    </p>
-
-    <p class="info">
-        <img src="pics/3.png" width="67" height="67" alt="">
-        <strong>Created</strong> as a web application project in association with Metropolia University of Applied Sciences and only
-        non-marketed and open
-        source APIs are used. Check out the source code from GitHub. Creators are Niko Holopainen, Jetro Saarti and Daniel Eggleton.
-    </p>
 </main>
 <footer class="backround-colour MobileFontX-large">
     <p>Copyright © 2019 <strong>All rights reserved. Developed by Niko Holopainen, Jetro Saarti, Daniel
@@ -72,6 +78,11 @@
 </footer>
 <script src="scripts/linkedEventsList.js"></script>
 <script src="scripts/QuickDate.js"></script>
-<script>setStartDate(0);</script>
+<script>
+    setStartDate(0);
+    function showAbout(){
+
+    }
+</script>
 </body>
 </html>

@@ -25,6 +25,12 @@ main p img{
     width: calc(100% / 3 - 4rem);
     padding: 2rem;
 }
+
+#about{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 main{
     display: flex;
     flex-wrap: wrap;
