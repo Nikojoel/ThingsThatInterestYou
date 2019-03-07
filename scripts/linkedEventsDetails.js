@@ -71,6 +71,9 @@ function showEventInfo(json) {
     info.appendChild(location_name);
     info.appendChild(street_address);
 
+    const lon = json.location.position.coordinates[1];
+    const lat = json.location.position.coordinates[0];
+
     // Näytetään kartta ja copyright oikeudet alakulmassa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

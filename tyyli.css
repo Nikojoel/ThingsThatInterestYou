@@ -29,6 +29,22 @@ main{
     max-width: 70em;
     justify-content: center;
 }
+main ul li figure{
+    padding: 1rem 1rem 1rem 0;
+}
+.address_info_list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.location_name_list{
+    width: 100%;
+    margin: .5rem 0;
+}
+.street_address_list{
+    width: 100%;
+    margin: .5rem 0;
+}
+
 .MobileFontX-large {
     font-size: 1.6rem;
 }
@@ -114,6 +130,9 @@ nav ul li a{
 .colourbtn:hover{
     cursor: pointer;
 }
+.colourbtn:focus {
+    outline:0;
+}
 .mapdiv{
     width: 30rem;
     height: 30rem;
@@ -160,6 +179,7 @@ nav ul li a{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    border-bottom-style: solid;
 }
 
 .start_time_list {
@@ -209,6 +229,12 @@ footer{
     align-items: center;
     text-align: center;
 }
+.anchor{
+    display: block;
+    height: 8rem;
+    margin-top: -8rem;
+    visibility: hidden;
+}
 @media only screen and (min-width: 610px) {
     .MobileFontX-large {
         font-size: 1.4rem;
@@ -227,6 +253,7 @@ footer{
         height: calc(173px / 1.75);
         padding: 1rem;
     }
+
 
 }
 
