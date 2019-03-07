@@ -1,5 +1,6 @@
 'use strict';
 
+const list = document.querySelector('#events_result');
 const search_text = document.querySelector('#search_text');
 const search_btn = document.querySelector('#search_btn');
 
@@ -10,12 +11,19 @@ const language = '&language=' + 'fi';
 const start_date = '&start=';
 const end_date = '&end=';
 const sorting = '&sort=end_time';
+const pageSize = '&page_size=12';
 
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
 let pageNumber = 1;
 
+let loadMoreAnchor;
+let loadMoreActive = false;
+
 search_btn.addEventListener('click', function () {
+    const header = document.querySelector("#page_header");
+    header.scrollIntoView();
+    list.innerHTML = '';
     fetchEvents(1);
 });
 
@@ -30,7 +38,7 @@ search_text.addEventListener('keydown', function (e) {
 function fetchEvents(pageNum) {
     pageNumber = pageNum;
     const page = '&page=' + pageNum;
-    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value + sorting + page)
+    fetch(events_api_base + '&text=' + search_text.value + language + start_date + start_field.value + end_date + end_field.value + sorting + page + pageSize)
         .then(function (result) {
             return result.json();
         }).then(function (json) {
@@ -41,16 +49,13 @@ function fetchEvents(pageNum) {
 }
 
 function showEventList(json) {
-    const list = document.querySelector('#events_result');
-    list.innerHTML = '';
-
     console.log(json);
 
     for (let i = 0; i < json.data.length; i++) {
         const li = document.createElement('li');
         const title = document.createElement('h3');
         const titleLink = document.createElement('a');
-        const divMain= document.createElement('div');
+        const divMain = document.createElement('div');
         titleLink.href = 'event_info.html?id=' + json.data[i].id;
         titleLink.target = '_blank';
         titleLink.appendChild(document.createTextNode(json.data[i].name.fi));
@@ -85,29 +90,29 @@ function showEventList(json) {
         if (json.data[i].start_time !== null)
             start_time.textContent = json.data[i].start_time;
 
-        if(json.data[i].start_time!==null) {
-            const date=new Date(json.data[i].start_time);
-            start_time.textContent = 'Aloitus: '+listDate(date);
+        if (json.data[i].start_time !== null) {
+            const date = new Date(json.data[i].start_time);
+            start_time.textContent = 'Aloitus: ' + listDate(date);
         }
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
         if (json.data[i].end_time !== null)
             end_time.textContent = json.data[i].end_time;
 
-        if(json.data[i].end_time!==null) {
-            const date=new Date(json.data[i].end_time);
-            end_time.textContent = 'Loppu: '+listDate(date);
+        if (json.data[i].end_time !== null) {
+            const date = new Date(json.data[i].end_time);
+            end_time.textContent = 'Loppu: ' + listDate(date);
         }
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
         if (json.data[i].location.name !== null)
             location_name.textContent = json.data[i].location.name.fi;
-        if(json.data[i].location.name!==null)
-            location_name.textContent = "Paikka: "+json.data[i].location.name.fi;
+        if (json.data[i].location.name !== null)
+            location_name.textContent = "Paikka: " + json.data[i].location.name.fi;
 
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
-        street_address.textContent = "Osoite: "+json.data[i].location.street_address.fi + ', ' + json.data[i].location.address_locality.fi;
+        street_address.textContent = "Osoite: " + json.data[i].location.street_address.fi + ', ' + json.data[i].location.address_locality.fi;
 
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';
@@ -129,6 +134,11 @@ function showEventList(json) {
         //li.appendChild(address_info);
 
         list.appendChild(li);
+
+        if (i === 6 && json.meta.next !== null) {
+            loadMoreActive = true;
+            loadMoreAnchor = li;
+        }
     }
 
     const results = json.meta.count; //hakutulosten määrä
@@ -146,14 +156,13 @@ function showEventList(json) {
         li.textContent='1';
         pages.appendChild(li);
     }
-    */
+
     const previous = document.createElement('a');
     previous.textContent = '<';
     if (json.meta.previous !== null) {
         previous.href = '#';
         previous.setAttribute('onclick', 'previousPage()');
     }
-    pages.appendChild(document.createElement('li').appendChild(previous));
 
     const next = document.createElement('a');
     next.textContent = '>';
@@ -161,19 +170,28 @@ function showEventList(json) {
         next.href = '#';
         next.setAttribute('onclick', 'nextPage()');
     }
+
+    pages.appendChild(document.createElement('li').appendChild(previous));
     pages.appendChild(document.createElement('li').appendChild(next));
 
-
-    //console.log(json.meta.previous);
-    //console.log(json.meta.next); //linkki seuraaviin hakutuloksiin, jos enemmän kuin sivullinen (20kpl)
+    */
 }
 
 function nextPage() {
-    fetchEvents(pageNumber+1);
+    fetchEvents(pageNumber + 1);
 }
 
 function previousPage() {
     if (pageNumber > 1) {
-        fetchEvents(pageNumber-1);
+        fetchEvents(pageNumber - 1);
     }
 }
+
+window.onscroll = function () {
+    if (loadMoreActive === true) {
+        if (loadMoreAnchor.getBoundingClientRect().top <= 0) {
+            nextPage();
+            loadMoreActive = false;
+        }
+    }
+};
