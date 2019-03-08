@@ -12,24 +12,30 @@
 
 </head>
 <body class="backround-colour" onload="fetchEventInfo()">
-<header class="primary-colour">
-    <img src="pics/WebLogo.png" alt="Things That Interest You logo">
-    <h1 class="MobileFontXXX-large">Things That Interest You</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a>About</a></li>
-            <li><a href="https://github.com/Nnikkeli/WebProjekti">GitHub</a></li>
-            <li><a>Administrator login</a></li>
+<header class="primary-colour" id="page_header">
+    <div class="logoInfo">
+        <img class="headerLogo" src="pics/WebLogo.png" alt="Things That Interest You logo">
+        <h1 class="MobileFontXXX-large">Things That Interest You</h1>
+    </div>
+    <div class="quickLinksDiv">
+        <ul class="quickLinks">
+            <li class="quickLinksItem">
+                <a href="https://github.com/Nnikkeli/WebProjekti">
+                    <img src="pics/github.png" alt="Github logo" width="40" height="40">
+                </a></li>
+            <li class="quickLinksItem">
+                <a href="http://users.metropolia.fi/~nikoholo/Web-tekniikat_ja_digitaalinen_media/TEKIJ%C3%84T/creators.html">
+                    <img src="pics/lock.png" alt="login" width="40" height="40">
+                </a></li>
         </ul>
-    </nav>
-
+    </div>
 </header>
 
 <main>
     <div id="event_info"></div>
     <div id="map" class="mapdiv"></div>
-    <div id="navigate"><a id="navAdress" onclick="navigate()" href="https://www.google.com/maps/">Navigate</a></div>
+    <img id="navigate" src="pics/location_100px.png" alt="Navigate button" width="100" height="100"><a
+        href="https://reittiopas.hsl.fi/POS/-/lahellasi"></a>
     <footer class="backround-colour MobileFontX-large">
 
         <p>Copyright © 2019 <strong>All rights reserved. Developed by Niko Holopainen, Jetro Saarti, Daniel
