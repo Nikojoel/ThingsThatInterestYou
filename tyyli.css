@@ -245,7 +245,7 @@ button {
     height: 30rem;
 }
 
-.haku{
+.search {
     z-index: 2;
     background-color: #ececec;
     width: 100%;
@@ -272,7 +272,7 @@ button {
     padding: .20rem;
 }
 
-.haku input{
+.search input {
     margin: .5rem;
 }
 
