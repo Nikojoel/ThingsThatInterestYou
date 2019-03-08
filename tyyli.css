@@ -172,12 +172,14 @@ button {
     max-width: 50em;
     flex: 1;
     margin: .5em 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #input
 
 #search_text {
-    font-size: 2em;
+    font-size: 1.6em;
 }
 
 #search_options input {
@@ -208,9 +210,11 @@ button {
     height: 100%;
 }
 #search_btn{
-    height: 100%;
-    width: 6em;
+    height: 3em;
+    width: 3em;
     padding: 0;
+    background-image: url("pics/1.png");
+    background-size:100% 100%;
 }
 #navigate a{
     display: block;
@@ -259,6 +263,7 @@ button {
 #search_options{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: left;
     margin: 1em;
 }
