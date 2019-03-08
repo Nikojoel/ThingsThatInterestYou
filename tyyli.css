@@ -87,6 +87,7 @@ header{
     flex-wrap: wrap;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 header h1{
     padding: 1rem;
@@ -97,44 +98,54 @@ header h1{
     margin: 0;
 }
 
-header img{
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.quickLinksItem:hover {
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.logoInfo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.headerLogo {
     width: calc(331px / 1.5);
     height: calc(173px / 1.5);
     padding: 1rem;
 }
-nav{
-    padding: 0.5rem 0 0 0;
-    width: 100%;
-}
-nav ul{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-nav ul li{
+
+.quickLinks {
     list-style-type: none;
-    width: calc(100% / 4);
-    text-align: center;
-    padding: 0;
-    border-right-style: solid;
-    border-color: #161d27;
-    border-width: 1px;
-}
-nav ul li:last-of-type{
-  border-right-style: none;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-nav ul li:hover{
-    background-color: #22313f;
-    cursor: pointer;
+.quickLinks a {
+    margin: 0 1rem 0 0;
 }
-nav ul li a{
-    display: block;
-    text-decoration: none;
-    color: #ececec;
-    padding: 1rem 0;
+
+.linkPics {
+    width: 50px;
+    height: 50px;
 }
 h3 a {
     text-decoration: none;
@@ -150,14 +161,51 @@ input {
 button {
     font-family: 'Libre Franklin', sans-serif;
 }
-#start_date {
 
+
+#search_and_options {
+    max-width: 50em;
+    flex: 1;
+    margin: .5em 0;
 }
-#end_date {
 
+#input
+
+#search_text {
+    font-size: 2em;
+}
+
+#search_options input {
+    font-size: 1em;
+}
+
+#search_and_options button{
+  font-size: 1.2em;
+}
+
+#today_btn {
+    width: 6em;
+}
+
+#tomorrow_btn {
+    width: 8em;
+}
+
+#search_area {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 1em;
+    height: 3em;
 }
 #search_text {
-
+    width: 100%;
+    height: 100%;
+}
+#search_btn{
+    height: 100%;
+    width: 6em;
+    padding: 0;
 }
 #navigate a{
     display: block;
@@ -187,6 +235,7 @@ button {
     width: 30rem;
     height: 30rem;
 }
+
 .haku{
     z-index: 2;
     background-color: #ececec;
@@ -198,22 +247,21 @@ button {
     top: 0;
     display: flex;
     flex-wrap: wrap;
-    padding: 0.5rem;
+    padding: 0;
 }
-#quickSelect{
+
+
+#search_options{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin: 1em;
 }
-#quickSelect button{
+#search_options button{
     margin: 0 0.5rem;
     padding: .20rem;
 }
-.haku h1{
-    flex-basis: 100%;
-    text-align: center;
-    margin: 0;
-}
+
 .haku input{
     margin: .5rem;
 }
@@ -326,6 +374,7 @@ footer{
     visibility: hidden;
 }
 
+
 @media (max-width: 40em) {
     .summary_list {
         display: none;
@@ -345,7 +394,7 @@ footer{
         font-size: 2.1rem;
     }
 
-    header img{
+    .headerLogo {
         width: calc(331px / 1.75);
         height: calc(173px / 1.75);
         padding: 1rem;
@@ -368,7 +417,7 @@ footer{
             height: 3%;
         }
 
-        header img{
+        .headerLogo {
             width: calc(331px / 2);
             height: calc(173px / 2);
             padding: 1rem;
