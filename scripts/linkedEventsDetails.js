@@ -4,6 +4,12 @@
 const event_id = window.location.href.split('=').pop();
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/';
 const map = L.map('map').setView([60.170887, 24.941531], 10);
+let lon,lat,lonCurrent,latCurrent;
+const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+};
 
 
 function fetchEventInfo() {
@@ -83,8 +89,13 @@ function showEventInfo(json) {
     info.appendChild(street_address);
     info.appendChild(info_url);
 
-    const lon = json.location.position.coordinates[1];
-    const lat = json.location.position.coordinates[0];
+    console.log(location_name);
+    console.log(street_address);
+    lon = json.location.position.coordinates[1];
+    lat = json.location.position.coordinates[0];
+    console.log(lon);
+    console.log(lat);
+
 
     // Näytetään kartta ja copyright oikeudet alakulmassa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -96,6 +107,27 @@ function showEventInfo(json) {
         .bindPopup(street_address)
         .openPopup();
 }
+function error() {
+    console.log(error);
+}
+
+    navigator.geolocation.getCurrentPosition(getCoords, error, options);
+
+// Haetaan käyttäjän coordinaatit
+function getCoords(position) {
+    latCurrent = position.coords.latitude;
+    lonCurrent = position.coords.longitude;
+    console.log(latCurrent);
+    console.log(lonCurrent);
+}
+
+const navAdress = document.getElementById('navAdress');
+// Navigoidaan tapahtuman osoitteeseen Google Mapsin avulla
+function navigate() {
+    navAdress.href = `https://www.google.com/maps/dir/?api=1&origin=${latCurrent},${lonCurrent}&destination=${lon},${lat}`;
+    console.log(navAdress.href);
+}
+
 
 
 
