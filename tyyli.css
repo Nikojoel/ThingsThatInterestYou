@@ -135,6 +135,29 @@ nav ul li a{
     text-decoration: none;
     color: #ececec;
 }
+h3 a {
+    text-decoration: none;
+    color:#2c3e50;
+}
+h3 a:hover {
+    text-decoration: underline;
+    color: #445668;
+}
+input {
+    font-family: 'Libre Franklin', sans-serif;
+}
+button {
+    font-family: 'Libre Franklin', sans-serif;
+}
+#start_date {
+
+}
+#end_date {
+
+}
+#search_text {
+
+}
 .colourbtn{
     background-color: #22313f;
     color: #ececec;
