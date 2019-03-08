@@ -101,24 +101,29 @@ header h1{
 @keyframes shake {
     0% {
         transform: rotate(0deg);
+        transform-origin: center;
     }
     25% {
         transform: rotate(10deg);
+        transform-origin: center;
     }
     50% {
         transform: rotate(0deg);
+        transform-origin: center;
     }
     75% {
         transform: rotate(-10deg);
+        transform-origin: center;
     }
     100% {
         transform: rotate(0deg);
+        transform-origin: center;
     }
 }
 
-.quickLinksItem:hover {
+.quickLinksItem img:hover {
     animation-name: shake;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
 .logoInfo {
