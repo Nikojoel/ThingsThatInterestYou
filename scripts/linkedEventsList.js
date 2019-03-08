@@ -81,6 +81,27 @@ function showEventList(json) {
         picLink.appendChild(img);
         figure.appendChild(picLink);
 
+      const calender = document.createElement('img');
+      calender.className = 'thumbnail';
+      calender.src = 'pics/calender.png';
+      calender.alt = 'Calender thumbnail';
+
+      const clock = document.createElement('img');
+      clock.className = 'thumbnail';
+      clock.src = 'pics/clock.png';
+      clock.alt = 'Clock thumbnail';
+
+      const placeMarker = document.createElement('img');
+      placeMarker.className = 'thumbnail';
+      placeMarker.src = 'pics/location.png';
+      placeMarker.alt = 'Location thumbnail';
+
+      const streetMarker = document.createElement('img');
+      streetMarker.className = 'thumbnail';
+      streetMarker.src = 'pics/street.png';
+      streetMarker.alt = 'Street sign thumbnail';
+
+
         const summary = document.createElement('div');
         summary.className = 'summary_list';
         if (json.data[i].description !== null)
@@ -93,25 +114,29 @@ function showEventList(json) {
         start_time.className = 'start_time_list';
         if (json.data[i].start_time !== null) {
             const date = new Date(json.data[i].start_time);
-            start_time.textContent = 'Aloitus: ' + listDate(date);
+          start_time.textContent = listDate(date);
         }
         const end_time = document.createElement('p');
         end_time.className = 'end_time_list';
-        if (json.data[i].end_time !== null) {
-            const date = new Date(json.data[i].end_time);
-            end_time.textContent = 'Loppu: ' + listDate(date);
+      if (json.data[i].end_time || json.data[i].start_time !== null) {
+        const start = new Date(json.data[i].start_time);
+        const end = new Date(json.data[i].end_time);
+        end_time.textContent = listTime(start, end);
         }
+      if (json.data[i].end_time === null) {
+        const start = new Date(json.data[i].start_time);
+        end_time.textContent = listTime(start, null);
+      }
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
         if (json.data[i].location.name !== null)
             location_name.textContent = json.data[i].location.name.fi;
         if (json.data[i].location.name !== null)
-            location_name.textContent = "Paikka: " + json.data[i].location.name.fi;
+          location_name.textContent = json.data[i].location.name.fi;
 
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
         if (json.data[i].location.street_address !== null)
-            street_address.textContent += "Osoite: ";
             street_address.textContent += json.data[i].location.street_address.fi + ', ';
         if (json.data[i].location.address_locality !== null)
             street_address.textContent += json.data[i].location.address_locality.fi;
@@ -119,8 +144,16 @@ function showEventList(json) {
 
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';
+
+      location_name.appendChild(placeMarker);
+      street_address.appendChild(streetMarker);
+
         address_info.appendChild(location_name);
         address_info.appendChild(street_address);
+
+      start_time.appendChild(calender);
+      end_time.appendChild(clock);
+
 
         textBox.appendChild(title);
         //textBox.appendChild(summary);

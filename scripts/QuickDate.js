@@ -39,11 +39,26 @@ function listDate(x){
   const year = date.getFullYear();
   const month = 1 + date.getMonth();
   const day = date.getDate();
-  const hour = date.getHours();
-  let minute = date.getMinutes();
-  if(minute<10){
-    minute='0'+minute;
-  }
-  return day+'.'+month+'.'+year+', Klo: '+hour+':'+minute;
+  return day + '.' + month + '.' + year;
 
+}
+
+function listTime(x, y) {
+  const startTime = new Date(x);
+  const endTime = new Date(y);
+  const startH = startTime.getHours();
+  let startM = startTime.getMinutes();
+  if (startM < 10) {
+    startM = '0' + startM;
+  }
+  const endH = endTime.getHours();
+  let endM = endTime.getMinutes();
+  if (endM < 10) {
+    endM = '0' + endM;
+  }
+
+  if (y === null) {
+    return startH + ':' + startM + ' - ';
+  }
+  return startH + ':' + startM + ' - ' + endH + ':' + endM;
 }
