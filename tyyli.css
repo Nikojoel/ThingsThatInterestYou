@@ -98,6 +98,29 @@ header h1{
     margin: 0;
 }
 
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.quickLinksItem:hover {
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
 .logoInfo {
     display: flex;
     flex-wrap: wrap;
@@ -145,6 +168,8 @@ button {
     flex: 1;
     margin: .5em 0;
 }
+
+#input
 
 #search_text {
     font-size: 2em;
@@ -198,6 +223,7 @@ button {
     width: 30rem;
     height: 30rem;
 }
+
 .haku{
     z-index: 2;
     background-color: #ececec;
@@ -335,6 +361,7 @@ footer{
     margin-top: -8rem;
     visibility: hidden;
 }
+
 
 @media (max-width: 40em) {
     .summary_list {
