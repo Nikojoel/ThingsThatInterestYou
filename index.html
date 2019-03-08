@@ -39,12 +39,18 @@
             <button id="search_btn" class="colourbtn" type = "submit"></button>
         </div>
         <div id="search_options">
-            <button onclick="setToday()" id="today_btn" class="colourbtn">Today</button>
-            <button onclick="setTomorrow()" id="tomorrow_btn" class="colourbtn">Tomorrow</button>
-            <input id="start_date" type="date">
-            <input id="end_date" type="date">
+            <div>
+                <button onclick="setToday()" id="today_btn" class="colourbtn">Today</button>
+                <button onclick="setTomorrow()" id="tomorrow_btn" class="colourbtn">Tomorrow</button>
+            </div>
+            <div>
+                <input id="start_date" type="date">
+                <input id="end_date" type="date">
+            </div>
         </div>
-        <h3 id="search_results"></h3>
+        <div id = search_meta>
+            <h3 id="search_results"></h3>
+        </div>
     </div>
 </div>
 <main>
