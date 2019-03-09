@@ -136,18 +136,19 @@ function showEventList(json) {
       }
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
-        if (json.data[i].location.name !== null)
-            location_name.textContent = json.data[i].location.name.fi;
-        if (json.data[i].location.name !== null)
-          location_name.textContent = json.data[i].location.name.fi;
-
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
-        if (json.data[i].location.street_address !== null)
-            street_address.textContent += json.data[i].location.street_address.fi + ', ';
-        if (json.data[i].location.address_locality !== null)
-            street_address.textContent += json.data[i].location.address_locality.fi;
 
+        if(json.data[i].location !== null) {
+            if (json.data[i].location.name !== null)
+                location_name.textContent = json.data[i].location.name.fi;
+            if (json.data[i].location.name !== null)
+                location_name.textContent = json.data[i].location.name.fi;
+            if (json.data[i].location.street_address !== null)
+                street_address.textContent += json.data[i].location.street_address.fi + ', ';
+            if (json.data[i].location.address_locality !== null)
+                street_address.textContent += json.data[i].location.address_locality.fi;
+        }
 
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';

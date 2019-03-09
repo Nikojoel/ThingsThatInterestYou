@@ -311,6 +311,10 @@ button {
     border-radius: .5em;
 }
 
+#search_options button:hover {
+    background: #182430;
+}
+
 #today_btn {
     width: 6em;
 }

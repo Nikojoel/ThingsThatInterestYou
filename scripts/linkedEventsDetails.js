@@ -3,7 +3,7 @@
 
 const event_id = window.location.href.split('=').pop();
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/';
-let lon,lat,lonCurrent,latCurrent;
+let lon, lat, lonCurrent, latCurrent;
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -47,7 +47,7 @@ function showEventInfo(json) {
     if (json.description !== null) {
         if (json.description.fi) {
             summary.innerHTML = json.description.fi;
-        } else if (json.description.en){
+        } else if (json.description.en) {
             summary.innerHTML = json.description.en;
         } else if (json.description.sv) {
             summary.innerHTML = json.description.sv;
@@ -56,41 +56,44 @@ function showEventInfo(json) {
 
     const start_time = document.createElement('p');
     start_time.className = 'start_time';
-  if (json.start_time !== null) {
-    const start = new Date(json.start_time);
-    start_time.textContent = 'Start time: ' + listDateTime(start);
-  }
+    if (json.start_time !== null) {
+        const start = new Date(json.start_time);
+        start_time.textContent = 'Start time: ' + listDateTime(start);
+    }
     const end_time = document.createElement('p');
     end_time.className = 'end_time';
-  if (json.end_time !== null) {
-    const end = new Date(json.end_time);
-    end_time.textContent = 'End time: ' + listDateTime(end);
-  } else {
-    end_time.textContent = 'End time: not defined';
-  }
+    if (json.end_time !== null) {
+        const end = new Date(json.end_time);
+        end_time.textContent = 'End time: ' + listDateTime(end);
+    } else {
+        end_time.textContent = 'End time: not defined';
+    }
     const location_name = document.createElement('p');
     location_name.className = 'location_name';
-    if (json.location.name !== null)
-      location_name.textContent = 'Place: ' + json.location.name.fi;
-
     const street_address = document.createElement('p');
     street_address.className = 'street_address';
 
-    if (json.location.street_address !== null) {
-      street_address.textContent += 'Address: ';
-        street_address.textContent += json.location.street_address.fi + ', ';
+    if (json.location !== null) {
+        if (json.location.name !== null)
+            location_name.textContent = 'Place: ' + json.location.name.fi;
+
+        if (json.location.street_address !== null) {
+            street_address.textContent += 'Address: ';
+            street_address.textContent += json.location.street_address.fi + ', ';
+        }
+        if (json.location.address_locality !== null)
+            street_address.textContent += json.location.address_locality.fi;
+
     }
-    if (json.location.address_locality !== null)
-        street_address.textContent += json.location.address_locality.fi;
 
     const info_url = document.createElement('a');
-  const buy_ticket = document.createElement('p');
-  buy_ticket.className = 'buy_ticket';
+    const buy_ticket = document.createElement('p');
+    buy_ticket.className = 'buy_ticket';
     info_url.className = 'info_url';
     if (json.info_url !== null) {
-      buy_ticket.textContent = 'More info: ';
+        buy_ticket.textContent = 'More info: ';
         info_url.textContent = json.info_url.fi;
-        info_url.href=json.info_url.fi;
+        info_url.href = json.info_url.fi;
     }
 
     info.appendChild(img);
@@ -100,7 +103,7 @@ function showEventInfo(json) {
     info.appendChild(end_time);
     info.appendChild(location_name);
     info.appendChild(street_address);
-  info.appendChild(buy_ticket);
+    info.appendChild(buy_ticket);
     info.appendChild(info_url);
 
     console.log(location_name);
@@ -121,11 +124,12 @@ function showEventInfo(json) {
         .bindPopup(street_address)
         .openPopup();
 }
+
 function error() {
     console.log(error);
 }
 
-    navigator.geolocation.getCurrentPosition(getCoords, error, options);
+navigator.geolocation.getCurrentPosition(getCoords, error, options);
 
 // Haetaan käyttäjän coordinaatit
 function getCoords(position) {
@@ -136,6 +140,7 @@ function getCoords(position) {
 }
 
 const navAdress = document.getElementById('navAdress');
+
 // Navigoidaan tapahtuman osoitteeseen Google Mapsin avulla
 function navigate() {
     navAdress.href = `https://www.google.com/maps/dir/?api=1&origin=${latCurrent},${lonCurrent}&destination=${lon},${lat}`;
