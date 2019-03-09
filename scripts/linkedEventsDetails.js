@@ -44,8 +44,15 @@ function showEventInfo(json) {
 
     const summary = document.createElement('p');
     summary.className = 'summary';
-    if (json.description !== null)
-        summary.innerHTML = json.description.fi;
+    if (json.description !== null) {
+        if (json.description.fi) {
+            summary.innerHTML = json.description.fi;
+        } else if (json.description.en){
+            summary.innerHTML = json.description.en;
+        } else if (json.description.sv) {
+            summary.innerHTML = json.description.sv;
+        }
+    }
 
     const start_time = document.createElement('p');
     start_time.className = 'start_time';

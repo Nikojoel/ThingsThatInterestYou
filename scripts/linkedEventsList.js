@@ -104,8 +104,15 @@ function showEventList(json) {
 
         const summary = document.createElement('div');
         summary.className = 'summary_list';
-        if (json.data[i].description !== null)
-            summary.innerHTML = json.data[i].description.fi;
+        if (json.data[i].description !== null) {
+            if (json.data[i].description.fi) {
+                summary.innerHTML = json.data[i].description.fi;
+            } else if (json.data[i].description.en){
+                summary.innerHTML = json.data[i].description.en;
+            } else if(json.data[i].description.sv) {
+                summary.innerHTML = json.data[i].description.sv;
+            }
+        }
 
         const textBox = document.createElement('div');
         textBox.className = 'textBox_list';
