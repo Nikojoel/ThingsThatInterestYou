@@ -3,7 +3,6 @@
 
 const event_id = window.location.href.split('=').pop();
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/';
-const map = L.map('map').setView([60.170887, 24.941531], 10);
 let lon,lat,lonCurrent,latCurrent;
 const options = {
     enableHighAccuracy: true,
@@ -96,7 +95,7 @@ function showEventInfo(json) {
     console.log(lon);
     console.log(lat);
 
-
+    const map = L.map('map').setView([lon, lat], 13);
     // Näytetään kartta ja copyright oikeudet alakulmassa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
