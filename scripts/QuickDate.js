@@ -62,3 +62,17 @@ function listTime(x, y) {
   }
   return startH + ':' + startM + ' - ' + endH + ':' + endM;
 }
+
+function listDateTime(x) {
+  const date = new Date(x);
+  const year = date.getFullYear();
+  const month = 1 + date.getMonth();
+  const day = date.getDate();
+  const hour = date.getHours();
+  let startM = date.getMinutes();
+  if (startM < 10) {
+    startM = '0' + startM;
+  }
+  return day + '.' + month + '.' + year + '  ' + hour + ':' + startM;
+
+}
