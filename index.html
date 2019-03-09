@@ -48,8 +48,14 @@
                 <button onclick="setTomorrow()" id="tomorrow_btn" class="colourbtn">Tomorrow</button>
             </div>
             <div>
-                <input id="start_date" type="date">
-                <input id="end_date" type="date">
+                <div id="from">
+                    <p>from</p>
+                    <input id="start_date" type="date">
+                </div>
+                <div id="to">
+                    <p>to</p>
+                    <input id="end_date" type="date">
+                </div>
             </div>
         </div>
         <div id=search_meta>
@@ -100,7 +106,7 @@
 <script src="scripts/linkedEventsList.js"></script>
 <script src="scripts/QuickDate.js"></script>
 <script>
-  setStartDate(0);
+    setStartDate(0);
 </script>
 </body>
 </html>

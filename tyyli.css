@@ -261,7 +261,7 @@ button {
     display: flex;
     width: 100%;
     align-items: center;
-    margin: 1em;
+    margin: 1em 1em .5em 1em;
     height: 3em;
 }
 #search_text {
@@ -280,21 +280,34 @@ button {
     background-image: url("pics/1.png");
     background-size:100% 100%;
     flex: none;
-    margin-left: .1em;
+    border-left-width: 0;
     border-radius: .8em;
+}
+
+#search_btn:hover {
+    border-style: solid;
+    border-color: #f8fcfc;
+    border-width: 1px;
 }
 
 #search_options{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: space-between;
     margin: 0 1em;
-    align-items: center;
+    box-sizing: border-box;
+    align-items: flex-end;
 }
 
-#search_options div {
-    margin: .3em;
+#search_options > div {
+    margin: .5em 0;
+    display: flex;
+}
+
+#search_options p {
+    font-size: 1em;
+    margin: 0;
 }
 
 #search_options input {
@@ -302,6 +315,7 @@ button {
     border-radius: .3em;
     height: 2em;
     margin: .1em;
+    padding-left: .2em;
 }
 
 #search_options button{
@@ -312,7 +326,7 @@ button {
 }
 
 #search_options button:hover {
-    background: #182430;
+    background: #375875;
 }
 
 #today_btn {
@@ -323,9 +337,18 @@ button {
     width: 8em;
 }
 
+#from {
+    margin: 0 .5em 0 0;
+}
+
+#from p, #to p {
+    padding-left: .2em;
+}
+
+
 #search_meta {
     width: 100%;
-    margin: 1em;
+    margin: .8em 1em;
     display: flex;
 }
 
