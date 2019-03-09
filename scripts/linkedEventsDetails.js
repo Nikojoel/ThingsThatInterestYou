@@ -108,21 +108,25 @@ function showEventInfo(json) {
 
     console.log(location_name);
     console.log(street_address);
-    lon = json.location.position.coordinates[1];
-    lat = json.location.position.coordinates[0];
-    console.log(lon);
-    console.log(lat);
+    if(json.location!==null&&json.location.position!==null&&json.location.position.coordinates!==null) {
+        lon = json.location.position.coordinates[1];
+        lat = json.location.position.coordinates[0];
+        console.log(lon);
+        console.log(lat);
 
-    const map = L.map('map').setView([lon, lat], 13);
-    // Näytetään kartta ja copyright oikeudet alakulmassa
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        const map = L.map('map').setView([lon, lat], 13);
+        // Näytetään kartta ja copyright oikeudet alakulmassa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-    // Lisätään markkeri jossa tapahtuma sijaitsee
-    L.marker([lon, lat]).addTo(map)
-        .bindPopup(street_address)
-        .openPopup();
+        // Lisätään markkeri jossa tapahtuma sijaitsee
+        L.marker([lon, lat]).addTo(map)
+            .bindPopup(street_address)
+            .openPopup();
+    }else {
+        document.querySelector("#navigate").innerHTML="";
+    }
 }
 
 function error() {
