@@ -12,18 +12,22 @@
 <body class="backround-colour">
 <header class="primary-colour" id="page_header">
     <div class="logoInfo">
-        <img class="headerLogo" src="pics/WebLogo.png" alt="Things That Interest You logo">
-        <h1 class="MobileFontXXX-large">Things That Interest You</h1>
+        <a href="index.html">
+            <img class="headerLogo" src="pics/WebLogo.png" alt="Things That Interest You logo">
+        </a>
+        <a href="index.html">
+            <h1 class="MobileFontXXX-large">Things That Interest You</h1>
+        </a>
     </div>
     <div class="quickLinksDiv">
         <ul class="quickLinks">
             <li class="quickLinksItem">
                 <a href="https://github.com/Nnikkeli/WebProjekti">
-                    <img src="pics/github.png" alt="Github logo" width="40" height="40">
-                </a></li>
+                    <img id='github' src="pics/github.png" alt="Github logo" width="40" height="40">
+            </a></li>
             <li class="quickLinksItem">
                 <a href="http://users.metropolia.fi/~nikoholo/Web-tekniikat_ja_digitaalinen_media/TEKIJ%C3%84T/creators.html">
-                    <img src="pics/lock.png" alt="login" width="40" height="40">
+                    <img id='login' src="pics/lock.png" alt="login" width="40" height="40">
                 </a></li>
         </ul>
     </div>
@@ -36,7 +40,7 @@
         <label for="end_date"></label>
         <div id="search_area">
             <input id="search_text" type="text" placeholder="Search...">
-            <button id="search_btn" class="colourbtn" type="submit"></button>
+            <button id="search_btn" class="colourbtn" type = "submit"></button>
         </div>
         <div id="search_options">
             <div>
@@ -48,7 +52,7 @@
                 <input id="end_date" type="date">
             </div>
         </div>
-        <div id=search_meta>
+        <div id = search_meta>
             <h3 id="search_results"></h3>
         </div>
     </div>
@@ -75,8 +79,7 @@
             <img src="pics/2.png" width="67" height="67" alt="">
             <strong>Filter</strong> your searches by specifing your desired starting aswell as ending date and keyword
             eq. music. Results are
-            independent of your current location. After pressing the search button, scroll down to load more results.
-            The amount of results is displayed under the search box
+            independent of your current location. Load up to 20 events per one search to choose from.
         </p>
 
         <p class="info">

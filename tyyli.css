@@ -90,41 +90,77 @@ header{
     justify-content: space-between;
 }
 header h1{
-    padding: 1rem;
+    padding: 0;
     width: auto;
     height: fit-content;
     font-family: 'Lobster', cursive;
     color: #ececec;
     margin: 0;
+    text-decoration: underline;
 }
 
 @keyframes shake {
     0% {
         transform: rotate(0deg);
-        transform-origin: center;
     }
     25% {
-        transform: rotate(10deg);
-        transform-origin: center;
+        transform: rotate(12.5deg);
     }
     50% {
         transform: rotate(0deg);
-        transform-origin: center;
     }
     75% {
-        transform: rotate(-10deg);
-        transform-origin: center;
+        transform: rotate(-12.5deg);
     }
     100% {
         transform: rotate(0deg);
-        transform-origin: center;
     }
 }
+
+@keyframes passiveShake {
+    0% {
+        transform: rotate(0deg);
+    }
+    95.0% {
+        transform: rotate(0deg);
+    }
+    96.25% {
+        transform: rotate(7.5deg);
+    }
+    97.50% {
+        transform: rotate(0deg);
+    }
+    98.75% {
+        transform: rotate(-7.5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 
 .quickLinksItem img:hover {
     animation-name: shake;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
+}
+
+.quickLinksItem img {
+    animation-name: passiveShake;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+#github {
+    animation-delay: 5s;
+}
+
+#github:hover {
+    animation-delay: 0s;
+}
+
+.buy_ticket {
+    margin: 1rem 0 0.5rem 0;
 }
 .logoInfo {
     display: flex;
@@ -135,7 +171,11 @@ header h1{
 .headerLogo {
     width: calc(331px / 1.5);
     height: calc(173px / 1.5);
-    padding: 1rem;
+}
+
+header a {
+    margin: 1rem;
+    text-decoration: none;
 }
 
 .quickLinks {
@@ -151,6 +191,20 @@ header h1{
 .linkPics {
     width: 50px;
     height: 50px;
+}
+
+#event_info {
+    width: 50%;
+    margin: 2rem 2rem 2rem 0;
+}
+
+#event_info img {
+    max-width: 40%;
+    height: auto;
+}
+
+#naviMap {
+    margin: 4rem 0 2rem 0;
 }
 h3 a {
     text-decoration: none;
@@ -200,6 +254,9 @@ button {
     border-style: hidden;
 }
 
+.logoInfo {
+    text-decoration: #ececec;
+}
 #search_area {
     display: flex;
     width: 100%;
@@ -297,8 +354,8 @@ button {
     outline:0;
 }
 .mapdiv{
-    width: 30rem;
-    height: 30rem;
+    width: 20rem;
+    height: 20rem;
 }
 
 #events_result {
@@ -432,7 +489,6 @@ footer{
     .headerLogo {
         width: calc(331px / 1.75);
         height: calc(173px / 1.75);
-        padding: 1rem;
     }
 }
 
@@ -455,7 +511,6 @@ footer{
         .headerLogo {
             width: calc(331px / 2);
             height: calc(173px / 2);
-            padding: 1rem;
         }
 
     }
