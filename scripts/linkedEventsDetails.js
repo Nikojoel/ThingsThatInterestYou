@@ -108,7 +108,11 @@ function showEventInfo(json) {
 
     console.log(location_name);
     console.log(street_address);
+
+    const navigate = document.querySelector("#navigate");
     if(json.location!==null&&json.location.position!==null&&json.location.position.coordinates!==null) {
+        navigate.innerHTML='<a id="navAdress" onclick="navigate()" href="https://www.google.com/maps/">Navigate</a>';
+
         lon = json.location.position.coordinates[1];
         lat = json.location.position.coordinates[0];
         console.log(lon);
@@ -125,14 +129,13 @@ function showEventInfo(json) {
             .bindPopup(street_address)
             .openPopup();
     }else {
-        document.querySelector("#navigate").innerHTML="";
+        navigate.innerHTML="";
     }
 }
 
 function error() {
     console.log(error);
 }
-
 navigator.geolocation.getCurrentPosition(getCoords, error, options);
 
 // Haetaan käyttäjän coordinaatit
