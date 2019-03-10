@@ -20,11 +20,13 @@ let pageNumber = 1;
 let lastEventID;
 let loadMoreAnchor;
 let loadMoreActive = false;
+let eventCount = 0;
 
 search_btn.addEventListener('click', function () {
     const header = document.querySelector("#page_header");
     header.scrollIntoView();
     list.innerHTML = '';
+    eventCount=0;
     fetchEvents(1);
 });
 
@@ -52,6 +54,7 @@ function fetchEvents(pageNum) {
 function showEventList(json) {
     console.log(json);
     const currentDateTime = new Date();
+    const currentYear = currentDateTime.getFullYear();
     const currentDate = currentDateTime.getDate();
     const currentHour = currentDateTime.getHours();
 
@@ -62,11 +65,13 @@ function showEventList(json) {
         }
 
         const eventStartDateTime = new Date(json.data[i].start_time);
+        const eventStartYear = eventStartDateTime.getFullYear();
         const eventStartMonth = eventStartDateTime.getMonth();
         const eventStartDate = eventStartDateTime.getDate();
         const eventStartHour = eventStartDateTime.getHours();
 
         const searchFieldDateFrom = new Date(start_field.valueAsDate);
+        const searchYearFrom = searchFieldDateFrom.getFullYear();
         const searchMonthFrom = searchFieldDateFrom.getMonth();
         const searchDateFrom = searchFieldDateFrom.getDate();
 
@@ -75,7 +80,13 @@ function showEventList(json) {
                 continue;
         }
 
-        if (searchMonthFrom >= eventStartMonth && searchDateFrom > eventStartDate) {
+        /*
+        if (searchYearFrom>eventStartYear || searchMonthFrom > eventStartMonth) {
+            continue;
+        }
+        */
+
+        if(searchMonthFrom === eventStartMonth && searchDateFrom > eventStartDate){
             continue;
         }
 
@@ -207,18 +218,22 @@ function showEventList(json) {
             loadMoreAnchor = li;
         }
 
+        eventCount+=1;
     }
 
     const results = json.meta.count; //hakutulosten määrä
     document.querySelector('#search_results').textContent = 'Search results: ' + results;
 
-    if (loadMoreActive === false && json.meta.next !== null) {
-        nextPage();
+    if (json.meta.next !== null) {
+        if(loadMoreActive === false||eventCount<6){
+            nextPage();
+        }
     }
 }
 
 function nextPage() {
     fetchEvents(pageNumber + 1);
+    console.log(eventCount);
 }
 
 function previousPage() {
