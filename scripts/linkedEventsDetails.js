@@ -36,7 +36,7 @@ function showEventInfo(json) {
     try {
         img.src = json.images[0].url; //tapahtumaan mahdollisesti liitetty kuva
     } catch (e) {
-        //img.src = 'noimage_medium.jpg';
+        img.src = 'https://dummyimage.com/185x110/bfbdbf/000000.png&text=Image+not+available';
     }
     img.alt = 'event image';
     img.className = 'event_image';
