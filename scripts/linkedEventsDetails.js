@@ -107,7 +107,6 @@ function showEventInfo(json) {
 
     const navigate = document.querySelector("#navigate");
     if (json.location !== null && json.location.position !== null && json.location.position.coordinates !== null) {
-        navigate.innerHTML = '<a id="navAdress" onclick="navigate()" href="https://www.google.com/maps/">Navigate</a>';
 
         lon = json.location.position.coordinates[1];
         lat = json.location.position.coordinates[0];
