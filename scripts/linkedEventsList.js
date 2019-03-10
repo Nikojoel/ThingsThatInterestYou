@@ -23,6 +23,9 @@ let loadMoreActive = false;
 let eventCount = 0;
 
 search_btn.addEventListener('click', function () {
+    document.querySelector("#about").style.display="none";
+    document.querySelector(".lds-spinner").style.display="inline-block";
+
     const header = document.querySelector("#page_header");
     header.scrollIntoView();
     list.innerHTML = '';
@@ -228,6 +231,8 @@ function showEventList(json) {
         if(loadMoreActive === false||eventCount<6){
             nextPage();
         }
+    }else {
+        document.querySelector(".lds-spinner").style.display="none";
     }
 }
 
