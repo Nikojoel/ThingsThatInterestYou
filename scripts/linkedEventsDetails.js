@@ -1,8 +1,8 @@
 'use strict';
 
 
-const event_id = window.location.href.split('=').pop();
-const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/';
+const eventID = window.location.href.split('=').pop();
+const eventsApiBase = 'http://api.hel.fi/linkedevents/v1/event/';
 let lon, lat, lonCurrent, latCurrent;
 const options = {
     enableHighAccuracy: true,
@@ -10,9 +10,8 @@ const options = {
     maximumAge: 0,
 };
 
-
 function fetchEventInfo() {
-    fetch(events_api_base + event_id + '/?include=location')
+    fetch(eventsApiBase + eventID + '/?include=location')
         .then(function (result) {
             return result.json();
         }).then(function (json) {
@@ -106,12 +105,9 @@ function showEventInfo(json) {
     info.appendChild(buy_ticket);
     info.appendChild(info_url);
 
-    console.log(location_name);
-    console.log(street_address);
-
     const navigate = document.querySelector("#navigate");
-    if(json.location!==null&&json.location.position!==null&&json.location.position.coordinates!==null) {
-        navigate.innerHTML='<a id="navAdress" onclick="navigate()" href="https://www.google.com/maps/">Navigate</a>';
+    if (json.location !== null && json.location.position !== null && json.location.position.coordinates !== null) {
+        navigate.innerHTML = '<a id="navAdress" onclick="navigate()" href="https://www.google.com/maps/">Navigate</a>';
 
         lon = json.location.position.coordinates[1];
         lat = json.location.position.coordinates[0];
@@ -128,14 +124,15 @@ function showEventInfo(json) {
         L.marker([lon, lat]).addTo(map)
             .bindPopup(street_address)
             .openPopup();
-    }else {
-        navigate.innerHTML="";
+    } else {
+        navigate.innerHTML = "";
     }
 }
 
 function error() {
     console.log(error);
 }
+
 navigator.geolocation.getCurrentPosition(getCoords, error, options);
 
 // Haetaan käyttäjän coordinaatit

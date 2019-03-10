@@ -24,7 +24,6 @@ let loadMoreActive = false;
 search_btn.addEventListener('click', function () {
     const header = document.querySelector("#page_header");
     header.scrollIntoView();
-    //document.querySelector("#about").style.display = "none";
     list.innerHTML = '';
     fetchEvents(1);
 });
@@ -52,11 +51,34 @@ function fetchEvents(pageNum) {
 
 function showEventList(json) {
     console.log(json);
+    const currentDateTime = new Date();
+    const currentDate = currentDateTime.getDate();
+    const currentHour = currentDateTime.getHours();
 
     for (let i = 0; i < json.data.length; i++) {
+
         if (json.data[i].id === lastEventID) {
             continue;
         }
+
+        const eventStartDateTime = new Date(json.data[i].start_time);
+        const eventStartMonth = eventStartDateTime.getMonth();
+        const eventStartDate = eventStartDateTime.getDate();
+        const eventStartHour = eventStartDateTime.getHours();
+
+        const searchFieldDateFrom = new Date(start_field.valueAsDate);
+        const searchMonthFrom = searchFieldDateFrom.getMonth();
+        const searchDateFrom = searchFieldDateFrom.getDate();
+
+        if (searchDateFrom === currentDate) {
+            if (eventStartDate === currentDate && currentHour > eventStartHour)
+                continue;
+        }
+
+        if (searchMonthFrom >= eventStartMonth && searchDateFrom > eventStartDate) {
+            continue;
+        }
+
         const li = document.createElement('li');
         const title = document.createElement('h3');
         const titleLink = document.createElement('a');
@@ -74,42 +96,41 @@ function showEventList(json) {
         try {
             img.src = json.data[i].images[0].url; //tapahtumaan mahdollisesti liitetty kuva
         } catch (e) {
-            img.src = 'https://dummyimage.com/185x185/bfbdbf/000000.png&text=Image+not+available';
+            img.src = 'https://dummyimage.com/185x110/bfbdbf/000000.png&text=Image+not+available';
         }
         img.alt = 'event image';
         img.className = 'event_image_list';
         picLink.appendChild(img);
         figure.appendChild(picLink);
 
-      const calender = document.createElement('img');
-      calender.className = 'thumbnail';
-      calender.src = 'pics/calender.png';
-      calender.alt = 'Calender thumbnail';
+        const calender = document.createElement('img');
+        calender.className = 'thumbnail';
+        calender.src = 'pics/calender.png';
+        calender.alt = 'Calender thumbnail';
 
-      const clock = document.createElement('img');
-      clock.className = 'thumbnail';
-      clock.src = 'pics/clock.png';
-      clock.alt = 'Clock thumbnail';
+        const clock = document.createElement('img');
+        clock.className = 'thumbnail';
+        clock.src = 'pics/clock.png';
+        clock.alt = 'Clock thumbnail';
 
-      const placeMarker = document.createElement('img');
-      placeMarker.className = 'thumbnail';
-      placeMarker.src = 'pics/location.png';
-      placeMarker.alt = 'Location thumbnail';
+        const placeMarker = document.createElement('img');
+        placeMarker.className = 'thumbnail';
+        placeMarker.src = 'pics/location.png';
+        placeMarker.alt = 'Location thumbnail';
 
-      const streetMarker = document.createElement('img');
-      streetMarker.className = 'thumbnail';
-      streetMarker.src = 'pics/street.png';
-      streetMarker.alt = 'Street sign thumbnail';
-
+        const streetMarker = document.createElement('img');
+        streetMarker.className = 'thumbnail';
+        streetMarker.src = 'pics/street.png';
+        streetMarker.alt = 'Street sign thumbnail';
 
         const summary = document.createElement('div');
         summary.className = 'summary_list';
         if (json.data[i].description !== null) {
             if (json.data[i].description.fi) {
                 summary.innerHTML = json.data[i].description.fi;
-            } else if (json.data[i].description.en){
+            } else if (json.data[i].description.en) {
                 summary.innerHTML = json.data[i].description.en;
-            } else if(json.data[i].description.sv) {
+            } else if (json.data[i].description.sv) {
                 summary.innerHTML = json.data[i].description.sv;
             }
         }
@@ -117,29 +138,35 @@ function showEventList(json) {
         const textBox = document.createElement('div');
         textBox.className = 'textBox_list';
 
-        const start_time = document.createElement('p');
-        start_time.className = 'start_time_list';
+        const dateElement = document.createElement('p');
+
+        let startDate;
         if (json.data[i].start_time !== null) {
-            const date = new Date(json.data[i].start_time);
-          start_time.textContent = listDate(date);
+            startDate = new Date(json.data[i].start_time);
+            dateElement.textContent = listDate(startDate);
         }
-        const end_time = document.createElement('p');
-        end_time.className = 'end_time_list';
-      if (json.data[i].end_time || json.data[i].start_time !== null) {
-        const start = new Date(json.data[i].start_time);
-        const end = new Date(json.data[i].end_time);
-        end_time.textContent = listTime(start, end);
+
+        if (json.data[i].end_time !== null) {
+            const endDate = new Date(json.data[i].end_time);
+            if (endDate.getFullYear() >= startDate.getFullYear() && endDate.getMonth() >= startDate.getMonth() && endDate.getDate() > startDate.getDate())
+                dateElement.textContent += " - " + listDate(endDate);
         }
-      if (json.data[i].end_time === null) {
-        const start = new Date(json.data[i].start_time);
-        end_time.textContent = listTime(start, null);
-      }
+
+        const event_time = document.createElement('p');
+        if (json.data[i].end_time || json.data[i].start_time !== null) {
+            const end = new Date(json.data[i].end_time);
+            event_time.textContent = listTime(startDate, end);
+        }
+        if (json.data[i].end_time === null) {
+            event_time.textContent = listTime(startDate, null);
+        }
+
         const location_name = document.createElement('p');
         location_name.className = 'location_name_list';
         const street_address = document.createElement('p');
         street_address.className = 'street_address_list';
 
-        if(json.data[i].location !== null) {
+        if (json.data[i].location !== null) {
             if (json.data[i].location.name !== null)
                 location_name.textContent = json.data[i].location.name.fi;
             if (json.data[i].location.name !== null)
@@ -153,73 +180,41 @@ function showEventList(json) {
         const address_info = document.createElement('div');
         address_info.className = 'address_info_list';
 
-      location_name.appendChild(placeMarker);
-      street_address.appendChild(streetMarker);
+        location_name.appendChild(placeMarker);
+        street_address.appendChild(streetMarker);
 
         address_info.appendChild(location_name);
         address_info.appendChild(street_address);
 
-      start_time.appendChild(calender);
-      end_time.appendChild(clock);
-
+        dateElement.appendChild(calender);
+        event_time.appendChild(clock);
 
         textBox.appendChild(title);
-        //textBox.appendChild(summary);
-        textBox.appendChild(start_time);
-        textBox.appendChild(end_time);
+        textBox.appendChild(dateElement);
+        textBox.appendChild(event_time);
         textBox.appendChild(address_info);
 
-        //li.appendChild(start_time);
-        //li.appendChild(end_time);
         li.appendChild(figure);
         li.appendChild(textBox);
         li.appendChild(summary);
-        //li.appendChild(textBox);
-        //li.appendChild(address_info);
 
         list.appendChild(li);
         lastEventID = json.data[i].id;
+
 
         if (loadMoreActive === false && i >= 2 && json.meta.next !== null) {
             loadMoreActive = true;
             loadMoreAnchor = li;
         }
+
     }
 
     const results = json.meta.count; //hakutulosten määrä
     document.querySelector('#search_results').textContent = 'Search results: ' + results;
 
-    const pages = document.querySelector('#search_pages');
-    pages.innerHTML = '';
-    /*
-    const totalPages = Math.ceil( parseInt(results)/20);
-    console.log(totalPages);
-    const maxPages = 5;
-    let pageLinks = (totalPages<maxPages)?totalPages:maxPages;
-    for(let i = 0; i<pageLinks;i++){
-        const li = document.createElement('li');
-        li.textContent='1';
-        pages.appendChild(li);
+    if (loadMoreActive === false && json.meta.next !== null) {
+        nextPage();
     }
-
-    const previous = document.createElement('a');
-    previous.textContent = '<';
-    if (json.meta.previous !== null) {
-        previous.href = '#';
-        previous.setAttribute('onclick', 'previousPage()');
-    }
-
-    const next = document.createElement('a');
-    next.textContent = '>';
-    if (json.meta.next !== null) {
-        next.href = '#';
-        next.setAttribute('onclick', 'nextPage()');
-    }
-
-    pages.appendChild(document.createElement('li').appendChild(previous));
-    pages.appendChild(document.createElement('li').appendChild(next));
-
-    */
 }
 
 function nextPage() {

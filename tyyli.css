@@ -2,36 +2,41 @@ html {
     scroll-behavior: smooth;
 }
 
-.primary-colour{
+.primary-colour {
     background-color: #2c3e50;
 }
-.backround-colour{
+
+.backround-colour {
     background-color: white;
 }
-.map{
+
+.map {
     max-width: 100%;
     width: 100%;
     height: auto;
     flex-basis: 100%;
 }
+
 .hidden {
     display: none;
 }
-main p img{
+
+main p img {
     display: block;
     padding: 1rem 0;
 }
-.info{
+
+.info {
     width: calc(100% / 3 - 4rem);
     padding: 2rem;
 }
 
-#about{
+#about {
     display: flex;
     flex-wrap: wrap;
 }
 
-main{
+main {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
@@ -39,20 +44,24 @@ main{
     max-width: 80em;
     justify-content: center;
 }
-main ul li figure{
+
+main ul li figure {
     padding: 1rem 1rem 1rem 0;
 }
-.address_info_list{
+
+.address_info_list {
     display: flex;
     flex-wrap: wrap;
 }
-.location_name_list{
+
+.location_name_list {
     width: 100%;
     margin: .5rem 0;
     display: flex;
     align-items: center;
 }
-.street_address_list{
+
+.street_address_list {
     width: 100%;
     margin: .5rem 0;
     display: flex;
@@ -68,12 +77,15 @@ main ul li figure{
 }
 
 .MobileFontXXX-large {
-    font-size: 2.9rem;
+    font-size: 2rem;
 }
-#MarketingPic{
+
+#MarketingPic {
     max-width: 100%;
     height: auto;
+    margin: 2em 0;
 }
+
 body {
     margin: 0;
     display: flex;
@@ -82,14 +94,16 @@ body {
     min-width: 300px;
     font-family: 'Libre Franklin', sans-serif;
 }
-header{
+
+header {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     align-items: center;
     justify-content: space-between;
 }
-header h1{
+
+header h1 {
     padding: 0;
     width: auto;
     height: fit-content;
@@ -162,6 +176,7 @@ header h1{
 .buy_ticket {
     margin: 1rem 0 0.5rem 0;
 }
+
 .logoInfo {
     display: flex;
     flex-wrap: wrap;
@@ -206,17 +221,21 @@ header a {
 #naviMap {
     margin: 4rem 0 2rem 0;
 }
+
 h3 a {
     text-decoration: none;
-    color:#2c3e50;
+    color: #2c3e50;
 }
+
 h3 a:hover {
     text-decoration: underline;
     color: #445668;
 }
+
 input {
     font-family: 'Libre Franklin', sans-serif;
 }
+
 button {
     font-family: 'Libre Franklin', sans-serif;
 }
@@ -257,6 +276,7 @@ button {
 .logoInfo {
     text-decoration: #ececec;
 }
+
 #search_area {
     display: flex;
     width: 100%;
@@ -264,6 +284,7 @@ button {
     margin: 1em 1em .5em 1em;
     height: 3em;
 }
+
 #search_text {
     width: 100%;
     height: 2em;
@@ -273,12 +294,13 @@ button {
     border-style: hidden;
     border-radius: .4em;
 }
-#search_btn{
+
+#search_btn {
     height: 3.7em;
     width: 3.7em;
     padding: 0;
     background-image: url("pics/1.png");
-    background-size:100% 100%;
+    background-size: 100% 100%;
     flex: none;
     border-left-width: 0;
     border-radius: .8em;
@@ -290,7 +312,7 @@ button {
     border-width: 1px;
 }
 
-#search_options{
+#search_options {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -315,10 +337,10 @@ button {
     border-radius: .3em;
     height: 2em;
     margin: .1em;
-    padding-left: .2em;
+    padding-left: .1em;
 }
 
-#search_options button{
+#search_options button {
     font-size: 1.2em;
     margin: .1em;
     height: 2em;
@@ -356,7 +378,7 @@ button {
     margin: 0;
 }
 
-#navigate a{
+#navigate a {
     display: block;
     padding: 1rem 1rem 1rem 1rem;
     height: fit-content;
@@ -365,22 +387,27 @@ button {
     background-color: #2c3e50;
     text-decoration: none;
 }
+
 #navigate a:hover {
     background: #182430;
 }
-.colourbtn{
+
+.colourbtn {
     background-color: #22313f;
     color: #ececec;
     border-radius: 0.9rem;
     padding: 0.35rem;
 }
-.colourbtn:hover{
+
+.colourbtn:hover {
     cursor: pointer;
 }
+
 .colourbtn:focus {
-    outline:0;
+    outline: 0;
 }
-.mapdiv{
+
+.mapdiv {
     width: 20rem;
     height: 20rem;
 }
@@ -390,7 +417,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding: .5em;
+    padding: 0 .5em;
+    margin: 0;
 }
 
 #events_result li {
@@ -401,13 +429,7 @@ button {
     padding: 0.5rem 0;
 }
 
-.start_time_list {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.end_time_list {
+.textBox_list p {
     width: 100%;
     display: flex;
     align-items: center;
@@ -417,11 +439,11 @@ button {
     box-sizing: border-box;
     min-width: 16em;
     margin: 0 .5em 0;
-    flex:1;
+    flex: 1;
 }
 
 .summary_list {
-    flex:1;
+    flex: 1;
     min-width: 12em;
     font-size: 1em;
     line-height: 1.2em;
@@ -437,7 +459,7 @@ button {
     background-image: linear-gradient(transparent, white);
     position: absolute;
     bottom: 0;
-    left:0;
+    left: 0;
     width: 100%;
     height: 2em;
 }
@@ -448,7 +470,6 @@ button {
     order: -1;
     padding: 0 0.5rem 0 0;
 }
-
 
 
 #events_result li figure {
@@ -474,7 +495,7 @@ button {
     align-items: center;
 }
 
-footer{
+footer {
     display: flex;
     flex-wrap: wrap;
     border-top-style: solid;
@@ -486,7 +507,8 @@ footer{
     align-items: center;
     text-align: center;
 }
-.anchor{
+
+.anchor {
     display: block;
     height: 8rem;
     margin-top: -8rem;
@@ -519,25 +541,26 @@ footer{
     }
 }
 
-    @media only screen and (min-width: 800px) and (orientation: landscape) {
-        .MobileFontX-large {
-            font-size: 1rem;
-        }
-
-        .MobileFontXX-large {
-            font-size: 1.2rem;
-        }
-
-        .MobileFontXXX-large {
-            font-size: 2.8rem;
-        }
-        header{
-            height: 3%;
-        }
-
-        .headerLogo {
-            width: calc(331px / 2);
-            height: calc(173px / 2);
-        }
-
+@media only screen and (min-width: 800px) and (orientation: landscape) {
+    .MobileFontX-large {
+        font-size: 1rem;
     }
+
+    .MobileFontXX-large {
+        font-size: 1.2rem;
+    }
+
+    .MobileFontXXX-large {
+        font-size: 2.8rem;
+    }
+
+    header {
+        height: 3%;
+    }
+
+    .headerLogo {
+        width: calc(331px / 2);
+        height: calc(173px / 2);
+    }
+
+}
