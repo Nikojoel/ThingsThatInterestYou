@@ -214,7 +214,7 @@ header a {
 }
 
 #event_info img {
-    max-width: 40%;
+    max-width: 60%;
     height: auto;
 }
 
@@ -408,8 +408,13 @@ button {
 }
 
 .mapdiv {
-    width: 20rem;
-    height: 20rem;
+    width: 25rem;
+    height: 25rem;
+}
+
+#mapFlex {
+    display: flex;
+    align-items: flex-end;
 }
 
 #events_result {
