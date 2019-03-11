@@ -208,7 +208,7 @@ header a {
 }
 
 #event_info {
-    width: 50%;
+    width: 40rem;
     margin: 2rem 2rem 2rem 0;
 }
 
@@ -265,6 +265,14 @@ button {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
+}
+
+#start_time {
+    margin: 0 0 1rem 0;
+    padding: 1rem 0 0 0;
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #bebabf;
 }
 
 #search_and_options input {
@@ -509,7 +517,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     border-top-style: solid;
-    border-color: #535254;
+    border-color: #bebabf;
     border-top-width: 1px;
     height: auto;
     width: 70%;
