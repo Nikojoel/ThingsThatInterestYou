@@ -105,13 +105,12 @@ function showEventInfo(json) {
     info.appendChild(buy_ticket);
     info.appendChild(info_url);
 
+    // Etsitään navigate elementti ja tarkistetaan onko Json formaatissa nulleja
     const navigate = document.querySelector("#navigate");
     if (json.location !== null && json.location.position !== null && json.location.position.coordinates !== null) {
 
         lon = json.location.position.coordinates[1];
         lat = json.location.position.coordinates[0];
-        console.log(lon);
-        console.log(lat);
 
         const map = L.map('map').setView([lon, lat], 13);
         // Näytetään kartta ja copyright oikeudet alakulmassa
@@ -132,14 +131,14 @@ function error() {
     console.log(error);
 }
 
+// Haetaan käyttäjän coordinaatit
 navigator.geolocation.getCurrentPosition(getCoords, error, options);
 
-// Haetaan käyttäjän coordinaatit
+
 function getCoords(position) {
     latCurrent = position.coords.latitude;
     lonCurrent = position.coords.longitude;
-    console.log(latCurrent);
-    console.log(lonCurrent);
+
 }
 
 const navAdress = document.getElementById('navAdress');
@@ -147,7 +146,6 @@ const navAdress = document.getElementById('navAdress');
 // Navigoidaan tapahtuman osoitteeseen Google Mapsin avulla
 function navigate() {
     navAdress.href = `https://www.google.com/maps/dir/?api=1&origin=${latCurrent},${lonCurrent}&destination=${lon},${lat}`;
-    console.log(navAdress.href);
 }
 
 
