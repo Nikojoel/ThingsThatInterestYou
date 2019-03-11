@@ -78,6 +78,10 @@ main ul li figure {
     font-size: 0.65rem;
 }
 
+footer p {
+    width: 100%;
+}
+
 #MarketingPic {
     max-width: 100%;
     height: auto;
@@ -267,7 +271,7 @@ button {
     box-sizing: border-box;
 }
 
-#start_time {
+.start_time {
     margin: 0 0 1rem 0;
     padding: 1rem 0 0 0;
     border-top-style: solid;
@@ -424,9 +428,13 @@ button {
     height: 25rem;
 }
 
+.info_url {
+    word-break: break-all;
+}
+
 #mapFlex {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #events_result {
@@ -520,7 +528,8 @@ footer {
     border-color: #bebabf;
     border-top-width: 1px;
     height: auto;
-    width: 70%;
+    width: 90%;
+    max-width: 900px;
     justify-content: center;
     align-items: center;
     text-align: center;
