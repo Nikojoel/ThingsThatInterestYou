@@ -28,7 +28,7 @@ main p img {
 
 .info {
     width: 100%;
-    padding: 2rem;
+    padding: .5rem 2rem;
     min-width: 10rem;
 }
 
@@ -47,7 +47,7 @@ main {
 }
 
 main ul li figure {
-    padding: 1rem 1rem 1rem 0;
+    padding: 1rem 1rem 0 0;
 }
 
 .address_info_list {
@@ -539,6 +539,7 @@ footer {
 
     .info {
         width: calc(100% / 3 - 4rem);
+        padding: 2rem;
     }
 
     #aboutDiv {
