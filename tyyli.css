@@ -504,7 +504,7 @@ footer {
     border-top-style: solid;
     border-color: #535254;
     border-top-width: 1px;
-    height: 4rem;
+    height: auto;
     width: 70%;
     justify-content: center;
     align-items: center;
