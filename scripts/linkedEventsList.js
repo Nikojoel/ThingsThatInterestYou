@@ -1,44 +1,70 @@
 'use strict';
 
+//listaelementti, johon tapahtumatiedot tulostuvat
 const list = document.querySelector('#events_result');
+//tekstikenttä (hakusana)
 const search_text = document.querySelector('#search_text');
+//hakunappula
 const search_btn = document.querySelector('#search_btn');
 
+//päivämääräkentät (tapahtuman aloitus ja lopetus)
 const start_field = document.querySelector('#start_date');
 const end_field = document.querySelector('#end_date');
 
+//oletuskieli näytettäville tiedoille
 const language = '&language=' + 'fi';
+
+//alku- ja loppupäivämäärä, joiden välillä tapahtuma voimassa
 const start_date = '&start=';
 const end_date = '&end=';
+
+//lajitteluperuste
 const sorting = '&sort=end_time';
+//yhdellä kutsulla haettavien tapahtumien määrä
 const pageSize = '&page_size=12';
 
+//apikutsun runko (linkedEvents)
 const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
+//sivunumero, jolla tapahtumia haetaan (jos tuloksia enemmän kuin yhden sivun verran)
 let pageNumber = 1;
 
+//viimeksi haetun tapahtuman id
 let lastEventID;
+
+//merkki jonka saavuttamisen jälkeen ladataan lisää tapahtumia (tapahtumia haetaan lisää vain selattaessa sivua alaspäin)
 let loadMoreAnchor;
 let loadMoreActive = false;
+
+//listaan ladattujen tapahtumien määrä
 let eventCount = 0;
 
+//hakunappulan toiminnot
 search_btn.addEventListener('click', function() {
   document.querySelector('#about').style.display = 'none';
+
+  //latausanimaatio näkyviin, kun aloitetaan haku
   document.querySelector('.lds-spinner').style.display = 'inline-block';
 
+  //siirrytään sivun alkuun, kun aloitetaan haku
   const header = document.querySelector('#page_header');
   header.scrollIntoView();
+
+  //tyhjennetään lista ja listaukseen liittyvät muuttujat
   list.innerHTML = '';
+  lastEventID = 0;
   eventCount = 0;
   fetchEvents(1);
 });
 
+//käynnistetään haku myös enterillä
 search_text.addEventListener('keydown', function(e) {
   if (e.keyCode === 13) {
     search_btn.click();
   }
 });
 
+//tapahtumatietojen haku/apikutsu (json)
 function fetchEvents(pageNum) {
   pageNumber = pageNum;
   const page = '&page=' + pageNum;
@@ -53,41 +79,41 @@ function fetchEvents(pageNum) {
   });
 }
 
+//näytetään apin kautta saadut tapahtumatiedot sivulla
 function showEventList(json) {
   console.log(json);
+
+  //nykyinen aika
   const currentDateTime = new Date();
-  const currentYear = currentDateTime.getFullYear();
   const currentDate = currentDateTime.getDate();
   const currentHour = currentDateTime.getHours();
 
+  //käydään läpi kaikki jsonin sisältämät tapahtumat
   for (let i = 0; i < json.data.length; i++) {
-
+    /* apin kautta tulee joskus samalla id:llä useita tapahtumia peräkkäin,
+    ei käsitellä tapahtumien kaksoiskappaleita */
     if (json.data[i].id === lastEventID) {
       continue;
     }
 
+    //tapahtuman aloitustiedot
     const eventStartDateTime = new Date(json.data[i].start_time);
-    const eventStartYear = eventStartDateTime.getFullYear();
     const eventStartMonth = eventStartDateTime.getMonth();
     const eventStartDate = eventStartDateTime.getDate();
     const eventStartHour = eventStartDateTime.getHours();
 
+    //hakukentän aloituspäivämäärä
     const searchFieldDateFrom = new Date(start_field.valueAsDate);
-    const searchYearFrom = searchFieldDateFrom.getFullYear();
     const searchMonthFrom = searchFieldDateFrom.getMonth();
     const searchDateFrom = searchFieldDateFrom.getDate();
 
+    //kun haetaan kuluvana päivänä alkaneita tapahtumia, ohitetaan tapahtumat, jotka ovat jo alkaneet
     if (searchDateFrom === currentDate) {
       if (eventStartDate === currentDate && currentHour > eventStartHour)
         continue;
     }
 
-    /*
-    if (searchYearFrom>eventStartYear || searchMonthFrom > eventStartMonth) {
-        continue;
-    }
-    */
-
+    //ei näytetä tapahtumia, jotka ovat alkaneet ennen haettua päivämäärää (apin antaa ei-toivottuja edellisen päivän tapahtumia)
     if (searchMonthFrom === eventStartMonth && searchDateFrom >
         eventStartDate) {
       continue;
@@ -96,6 +122,8 @@ function showEventList(json) {
     const li = document.createElement('li');
     const title = document.createElement('h3');
     const titleLink = document.createElement('a');
+
+    //tapahtuman lisätietojen hakuun siirtyminen (id:n perusteella)
     titleLink.href = 'event_info.html?id=' + json.data[i].id;
     titleLink.target = '_blank';
     titleLink.appendChild(document.createTextNode(json.data[i].name.fi));
@@ -107,11 +135,13 @@ function showEventList(json) {
     titleLink.target = '_blank';
     const img = document.createElement('img');
 
+    //näytetään tapahtumaan mahdollisesti liitetty kuva ja kuvan puuttuessa oletuskuva
     try {
-      img.src = json.data[i].images[0].url; //tapahtumaan mahdollisesti liitetty kuva
+      img.src = json.data[i].images[0].url;
     } catch (e) {
       img.src = 'https://dummyimage.com/185x110/bfbdbf/000000.png&text=Image+not+available';
     }
+
     img.alt = 'event image';
     img.className = 'event_image_list';
     picLink.appendChild(img);
@@ -137,6 +167,7 @@ function showEventList(json) {
     streetMarker.src = 'pics/street.png';
     streetMarker.alt = 'Street sign thumbnail';
 
+    //tapahtuman kuvausteksti, oletuskielenä suomi
     const summary = document.createElement('div');
     summary.className = 'summary_list';
     if (json.data[i].description !== null) {
@@ -160,6 +191,7 @@ function showEventList(json) {
       dateElement.textContent = listDate(startDate);
     }
 
+    //tapahtuman lopetusajan näyttäminen, jos eri kuin kuin aloitus
     if (json.data[i].end_time !== null) {
       const endDate = new Date(json.data[i].end_time);
       if (endDate.getFullYear() >= startDate.getFullYear() &&
@@ -182,6 +214,7 @@ function showEventList(json) {
     const street_address = document.createElement('p');
     street_address.className = 'street_address_list';
 
+    //tapahtuman sijaintitedot
     if (json.data[i].location !== null) {
       if (json.data[i].location.name !== null)
         location_name.textContent = json.data[i].location.name.fi;
@@ -218,6 +251,10 @@ function showEventList(json) {
     list.appendChild(li);
     lastEventID = json.data[i].id;
 
+    /*
+    tehdään listan osasta merkki, jonka kohdalle scrollatessa ladataan lisää hakutuloksia
+    (json-metatiedoista nähdään, onko tuloksia vielä hakematta)
+    */
     if (loadMoreActive === false && i >= 2 && json.meta.next !== null) {
       loadMoreActive = true;
       loadMoreAnchor = li;
@@ -226,30 +263,28 @@ function showEventList(json) {
     eventCount += 1;
   }
 
-  const results = json.meta.count; //hakutulosten määrä
+  //hakutulosten määrä
+  const results = json.meta.count;
   document.querySelector('#search_results').textContent = 'Search results: ' +
       results;
 
+  //haetaan lisää tapahtumia automaattisesti, jos hakutulosten määrä ei riitä siihen, että ladattaisiin vasta scrollatessa alaspäin
   if (json.meta.next !== null) {
     if (loadMoreActive === false || eventCount < 6) {
       nextPage();
     }
   } else {
+    //piilotetaan latausanimaatio, kun lataus päättyy (metatietojen mukaan ei lisää tuloksia)
     document.querySelector('.lds-spinner').style.display = 'none';
   }
 }
 
+//seuraavien hakutulosten haku
 function nextPage() {
   fetchEvents(pageNumber + 1);
-  console.log(eventCount);
 }
 
-function previousPage() {
-  if (pageNumber > 1) {
-    fetchEvents(pageNumber - 1);
-  }
-}
-
+//sivun scrollauksen mukaan tapahtuma uusien tapahtumatulossivujen latauksen aloitus
 window.onscroll = function() {
   if (loadMoreActive === true) {
     if (loadMoreAnchor.getBoundingClientRect().top <= 0) {

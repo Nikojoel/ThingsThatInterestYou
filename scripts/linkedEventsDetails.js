@@ -1,8 +1,10 @@
 'use strict';
 
-
+//otetaan apikutsussa käytettävä id osoiteriviltä
 const eventID = window.location.href.split('=').pop();
 const eventsApiBase = 'http://api.hel.fi/linkedevents/v1/event/';
+
+//koordinaattitiedot (tapahtuman ja käyttäjän sijainti)
 let lon, lat, lonCurrent, latCurrent;
 const options = {
     enableHighAccuracy: true,
@@ -10,6 +12,7 @@ const options = {
     maximumAge: 0,
 };
 
+//tehdään apikutsu ja haetaan yksittäisen tapahtuman tiedot id:n perusteella
 function fetchEventInfo() {
     fetch(eventsApiBase + eventID + '/?include=location')
         .then(function (result) {
@@ -21,6 +24,7 @@ function fetchEventInfo() {
     });
 }
 
+//näytetään apin kautta saadut tapahtumatiedot sivulla
 function showEventInfo(json) {
     console.log(json);
 
@@ -41,6 +45,7 @@ function showEventInfo(json) {
     img.alt = 'event image';
     img.className = 'event_image';
 
+    //kuvausteksti, oletuskielenä suomi
     const summary = document.createElement('p');
     summary.className = 'summary';
     if (json.description !== null) {
@@ -53,12 +58,15 @@ function showEventInfo(json) {
         }
     }
 
+    //tapahtuman aloitusaika (kellonaika)
     const start_time = document.createElement('p');
     start_time.className = 'start_time';
     if (json.start_time !== null) {
         const start = new Date(json.start_time);
         start_time.textContent = 'Start time: ' + listDateTime(start);
     }
+
+    //tapahtuman lopetusaika
     const end_time = document.createElement('p');
     end_time.className = 'end_time';
     if (json.end_time !== null) {
@@ -72,6 +80,7 @@ function showEventInfo(json) {
     const street_address = document.createElement('p');
     street_address.className = 'street_address';
 
+    //näytetään tapahtuman sijaintitiedot
     if (json.location !== null) {
         if (json.location.name !== null)
             location_name.textContent = 'Place: ' + json.location.name.fi;
@@ -82,9 +91,9 @@ function showEventInfo(json) {
         }
         if (json.location.address_locality !== null)
             street_address.textContent += json.location.address_locality.fi;
-
     }
 
+    //mahdollinen linkki tapahtuman lisätietoihin (tapahtuman omat sivut)
     const info_url = document.createElement('a');
     const buy_ticket = document.createElement('p');
     buy_ticket.className = 'buy_ticket';
@@ -134,11 +143,9 @@ function error() {
 // Haetaan käyttäjän coordinaatit
 navigator.geolocation.getCurrentPosition(getCoords, error, options);
 
-
 function getCoords(position) {
     latCurrent = position.coords.latitude;
     lonCurrent = position.coords.longitude;
-
 }
 
 const navAdress = document.getElementById('navAdress');
