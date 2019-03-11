@@ -426,7 +426,7 @@ button {
 
 #mapFlex {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 
 #events_result {
