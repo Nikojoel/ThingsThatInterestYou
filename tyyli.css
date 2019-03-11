@@ -35,6 +35,7 @@ main p img {
 #about {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 0 1rem 0;
 }
 
 main {
@@ -70,13 +71,17 @@ main ul li figure {
 }
 
 .MobileFontXXX-large {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
+}
+
+.footerFont {
+    font-size: 0.65rem;
 }
 
 #MarketingPic {
     max-width: 100%;
     height: auto;
-    margin: 2em 0;
+    margin: 2rem 0 0 0;
 }
 
 body {
@@ -434,6 +439,7 @@ button {
 
 .textBox_list p {
     width: 100%;
+    margin: .5rem 0;
     display: flex;
     align-items: center;
 }
@@ -522,7 +528,7 @@ footer {
     margin: 0;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 725px) {
     #headerH1 {
         display: none;
     }
