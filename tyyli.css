@@ -27,8 +27,9 @@ main p img {
 }
 
 .info {
-    width: calc(100% / 3 - 4rem);
+    width: 100%;
     padding: 2rem;
+    min-width: 10rem;
 }
 
 #about {
@@ -68,16 +69,8 @@ main ul li figure {
     align-items: center;
 }
 
-.MobileFontX-large {
-    font-size: 1.6rem;
-}
-
-.MobileFontXX-large {
-    font-size: 1.8rem;
-}
-
 .MobileFontXXX-large {
-    font-size: 2rem;
+    font-size: 1.9rem;
 }
 
 #MarketingPic {
@@ -184,8 +177,8 @@ header h1 {
 }
 
 .headerLogo {
-    width: calc(331px / 1.5);
-    height: calc(173px / 1.5);
+    width: calc(395px / 2);
+    height: calc(142px / 2);
 }
 
 header a {
@@ -197,6 +190,7 @@ header a {
     list-style-type: none;
     display: flex;
     flex-direction: row-reverse;
+    padding: 0;
 }
 
 .quickLinks a {
@@ -222,6 +216,10 @@ header a {
     margin: 4rem 0 2rem 0;
 }
 
+#aboutDiv {
+    display: flex;
+    flex-wrap: wrap;
+}
 h3 a {
     text-decoration: none;
     color: #2c3e50;
@@ -520,6 +518,16 @@ footer {
     visibility: hidden;
 }
 
+#headerH1 {
+    margin: 0;
+}
+
+@media (max-width: 650px) {
+    #headerH1 {
+        display: none;
+    }
+}
+
 
 @media (max-width: 40em) {
     .summary_list {
@@ -528,44 +536,22 @@ footer {
 }
 
 @media only screen and (min-width: 610px) {
-    .MobileFontX-large {
-        font-size: 1.4rem;
+
+    .info {
+        width: calc(100% / 3 - 4rem);
     }
 
-    .MobileFontXX-large {
-        font-size: 1.6rem;
+    #aboutDiv {
+        flex-wrap: nowrap;
     }
 
-    .MobileFontXXX-large {
-        font-size: 2.1rem;
-    }
-
-    .headerLogo {
-        width: calc(331px / 1.75);
-        height: calc(173px / 1.75);
-    }
 }
 
 @media only screen and (min-width: 800px) and (orientation: landscape) {
-    .MobileFontX-large {
-        font-size: 1rem;
-    }
 
-    .MobileFontXX-large {
-        font-size: 1.2rem;
-    }
-
-    .MobileFontXXX-large {
-        font-size: 2.8rem;
-    }
 
     header {
         height: 3%;
-    }
-
-    .headerLogo {
-        width: calc(331px / 2);
-        height: calc(173px / 2);
     }
 
 }
