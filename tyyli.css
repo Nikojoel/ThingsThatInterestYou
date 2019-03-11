@@ -100,10 +100,10 @@ header h1 {
     padding: 0;
     width: auto;
     height: fit-content;
-    font-family: 'Lobster', cursive;
+    font-family: 'Orbitron', sans-serif;
     color: #ececec;
     margin: 0;
-    text-decoration: underline;
+
 }
 
 @keyframes shake {
