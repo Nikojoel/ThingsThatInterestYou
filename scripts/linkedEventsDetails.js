@@ -2,7 +2,7 @@
 
 //otetaan apikutsussa käytettävä id osoiteriviltä
 const eventID = window.location.href.split('=').pop();
-const eventsApiBase = 'http://api.hel.fi/linkedevents/v1/event/';
+const eventsApiBase = 'https://api.hel.fi/linkedevents/v1/event/';
 
 //koordinaattitiedot (tapahtuman ja käyttäjän sijainti)
 let lon, lat, lonCurrent, latCurrent;

@@ -24,7 +24,7 @@ const sorting = '&sort=end_time';
 const pageSize = '&page_size=12';
 
 //apikutsun runko (linkedEvents)
-const events_api_base = 'http://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
+const events_api_base = 'https://api.hel.fi/linkedevents/v1/event/?include=location&super_event_type=none';
 
 //sivunumero, jolla tapahtumia haetaan (jos tuloksia enemmän kuin yhden sivun verran)
 let pageNumber = 1;
