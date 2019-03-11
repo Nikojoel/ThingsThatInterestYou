@@ -293,3 +293,15 @@ window.onscroll = function() {
     }
   }
 };
+
+//tarkistetaan scrollaussuunta. alaspäin scrollatessa piilotetaan hakupalkki, ylöspäin skrollatessa esiin
+const searchBar = document.querySelector('#search');
+let scrollPos = 0;
+window.addEventListener('scroll', function() {
+  if ((document.body.getBoundingClientRect()).top > scrollPos) {
+    searchBar.style.top = '0';
+  } else {
+    searchBar.style.top = -searchBar.scrollHeight.toString() + 'px';
+  }
+  scrollPos = (document.body.getBoundingClientRect()).top;
+});

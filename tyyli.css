@@ -269,7 +269,7 @@ button {
     font-family: 'Libre Franklin', sans-serif;
 }
 
-.search {
+#search {
     z-index: 2;
     background-color: #ececec;
     width: 100%;
@@ -281,6 +281,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
+    transition-duration: .2s;
 }
 
 #search_and_options {
@@ -404,7 +405,6 @@ button {
 #from p, #to p {
     padding-left: .2em;
 }
-
 
 #search_meta {
     width: 100%;
@@ -578,7 +578,6 @@ footer {
     }
 }
 
-
 @media (max-width: 40em) {
     .summary_list {
         display: none;
@@ -612,8 +611,6 @@ footer {
 }
 
 @media only screen and (min-width: 800px) and (orientation: landscape) {
-
-
     header {
         height: 3%;
     }
