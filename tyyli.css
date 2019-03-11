@@ -221,10 +221,9 @@ header a {
 }
 
 #event_info {
-    margin: 2rem 2rem 0 2rem;
+    margin: 2rem 2rem 2rem 2rem;
     display: flex;
     flex-wrap: wrap;
-    word-break: break-word;
 }
 
 #event_info img {
@@ -279,7 +278,7 @@ button {
     width: 100%;
     justify-content: center;
     align-items: center;
-    position: -webkit-sticky;
+
     position: sticky;
     top: 0;
     display: flex;
