@@ -13,7 +13,6 @@ function setTomorrow() {
 //Gets date, changes it into a date format and sets input end and start date.
 function setDate(x) {
     const d = new Date();
-    console.log(d.getFullYear() + d.getMonth() + d.getDate());
     const y = d.getFullYear();
     let m = 1 + d.getMonth();
     if (m < 10) {
