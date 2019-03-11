@@ -26,6 +26,11 @@ main p img {
     padding: 1rem 0;
 }
 
+main p {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .info {
     width: 100%;
     padding: .5rem 2rem;
@@ -212,17 +217,33 @@ header a {
 }
 
 #event_info {
-    width: 40rem;
-    margin: 2rem 2rem 2rem 0;
+    margin: 2rem 2rem 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-word;
 }
 
 #event_info img {
-    max-width: 60%;
     height: auto;
+    align-self: center;
+    min-width: 10rem;
+    max-width: 40%;
+}
+
+#event_info {
+    width: 100%;
+}
+
+#event_info p {
+    width: 100%;
+}
+
+#event_info h3 {
+    width: 100%;
 }
 
 #naviMap {
-    margin: 4rem 0 2rem 0;
+    margin: 1rem 0 1rem 0;
 }
 
 #aboutDiv {
@@ -278,6 +299,7 @@ button {
     border-width: 1px;
     border-color: #bebabf;
 }
+
 
 #search_and_options input {
     border-style: solid;
@@ -424,8 +446,8 @@ button {
 }
 
 .mapdiv {
-    width: 25rem;
-    height: 25rem;
+    width: 18rem;
+    height: 18rem;;
 }
 
 .info_url {
@@ -435,6 +457,7 @@ button {
 #mapFlex {
     display: flex;
     align-items: flex-start;
+    max-width: 90%;
 }
 
 #events_result {
@@ -490,6 +513,9 @@ button {
     height: 2em;
 }
 
+.info strong {
+    width: 100%;
+}
 .thumbnail {
     width: 24px;
     height: 24px;
@@ -564,6 +590,19 @@ footer {
     .info {
         width: calc(100% / 3 - 4rem);
         padding: 2rem;
+    }
+
+    #event_info {
+        width: calc(100% - 24rem);
+    }
+
+    .mapdiv {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    #naviMap {
+        margin: 4rem 0 2rem 0;
     }
 
     #aboutDiv {
