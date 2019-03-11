@@ -42,6 +42,9 @@ main p {
     flex-wrap: wrap;
     padding: 0 0 1rem 0;
 }
+footer a {
+    padding: .25rem;
+}
 
 main {
     display: flex;
@@ -85,6 +88,7 @@ main ul li figure {
 
 footer p {
     width: 100%;
+    margin: .25rem;
 }
 
 #MarketingPic {
