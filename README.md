@@ -1,9 +1,9 @@
-# ThingsThatInterestYou - Tapahtuma web-sovellus
+# ThingsThatInterestYou - Nearby event application
 
-[Web-sovellus](http://users.metropolia.fi/~nikoholo/Web-tekniikat_ja_digitaalinen_media/ThingsThatInterestYou/WebProjekti/index.html)
+[Full application](http://users.metropolia.fi/~nikoholo/Web-tekniikat_ja_digitaalinen_media/ThingsThatInterestYou/WebProjekti/index.html)
 
-#### Käytetyt APIt
+#### Used APIs
 * [OpenStreetMap](https://www.openstreetmap.org/)
-* [Helsingin tapahtumarajapinta](https://hri.fi/data/dataset/linked-events-tapahtumarajapinta)
-#### Kirjasto
+* [Helsinki linked-events](https://hri.fi/data/dataset/linked-events-tapahtumarajapinta)
+#### JavaScript library
 * [Leaflet](https://leafletjs.com/)
