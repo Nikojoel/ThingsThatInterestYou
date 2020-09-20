@@ -1,6 +1,6 @@
 # ThingsThatInterestYou - Nearby event application
-### Idea
-Finds events in the Helsinki metropolitan area using Helsinki linked-events API.
+### Description
+The intent of this project is to create an event finder application that works in Helsinki metropolitan area using Helsinki linked-events API.
 #### [Full application](http://users.metropolia.fi/~nikoholo/Web-tekniikat_ja_digitaalinen_media/ThingsThatInterestYou/WebProjekti/index.html)
 
 ### Feature specification
